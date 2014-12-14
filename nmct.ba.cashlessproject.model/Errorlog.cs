@@ -12,7 +12,7 @@ namespace nmct.ba.cashlessproject.model
         private string _timeStamp;
         private string _message;
         private string _stacktrace;
-        #region fields
+        #endregion fields
 
         #region properties
         public int RegisterId
@@ -35,13 +35,13 @@ namespace nmct.ba.cashlessproject.model
             get { return _stacktrace; }
             set { if (_stacktrace != value) { _stacktrace = value; } }
         }
-        #region properties
+        #endregion properties
 
         #region constructors
         public Errorlog()
         {
 
         }
-        #region constructors
+        #endregion constructors
     }
 }

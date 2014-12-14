@@ -41,13 +41,13 @@ namespace nmct.ba.cashlessproject.model
             get { return _expiresDate; }
             set { if (_expiresDate != value) { _expiresDate = value; } }
         }
-        #region properties
+        #endregion properties
 
         #region consturctors
         public Register()
         {
 
         }
-        #region constructors
+        #endregion constructors
     }
 }
