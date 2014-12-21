@@ -54,21 +54,20 @@ namespace nmct.ba.cashlessproject.api.Models
             return Database.InsertData(Database.GetConnection(CreateConnectionString(claims)), sql, par1, par2);
         }
 
-        public static void UpdateProduct(Product p, IEnumerable<Claim> claims)
+        public static int UpdateProduct(Product p, IEnumerable<Claim> claims)
         {
             string sql = "UPDATE Products SET ProductName=@ProductName, Price=@Price WHERE ID=@ID";
             DbParameter par1 = Database.AddParameter(Database.ADMIN_DB, "@ProductName", p.ProductName);
             DbParameter par2 = Database.AddParameter(Database.ADMIN_DB, "@Price", p.Price);
             DbParameter par3 = Database.AddParameter(Database.ADMIN_DB, "@ID", p.ID);
-            Database.ModifyData(Database.GetConnection(CreateConnectionString(claims)), sql, par1, par2, par3);
+            return Database.ModifyData(Database.GetConnection(CreateConnectionString(claims)), sql, par1, par2, par3);
         }
 
-        public static void DeleteProduct(int id, IEnumerable<Claim> claims)
+        public static int DeleteProduct(int id, IEnumerable<Claim> claims)
         {
             string sql = "DELETE FROM Products WHERE ID=@ID";
             DbParameter par1 = Database.AddParameter(Database.ADMIN_DB, "@ID", id);
-            DbConnection con = Database.GetConnection(CreateConnectionString(claims));
-            Database.ModifyData(con, sql, par1);
+            return Database.ModifyData(Database.GetConnection(CreateConnectionString(claims)), sql, par1);
         }
 
         private static Product Create(IDataRecord record)

@@ -56,7 +56,7 @@ namespace nmct.ba.cashlessproject.api.Models
             return Database.InsertData(Database.GetConnection(CreateConnectionString(claims)), sql, par1, par2, par3, par4);
         }
 
-        public static void UpdateEmployee(Employee e, IEnumerable<Claim> claims)
+        public static int UpdateEmployee(Employee e, IEnumerable<Claim> claims)
         {
             string sql = "UPDATE Employee SET EmployeeName=@EmployeeName, Address=@Address, Phone=@Phone, Email=@Email WHERE ID=@ID";
             DbParameter par1 = Database.AddParameter(Database.ADMIN_DB, "@EmployeeName", e.EmployeeName);
@@ -64,15 +64,14 @@ namespace nmct.ba.cashlessproject.api.Models
             DbParameter par3 = Database.AddParameter(Database.ADMIN_DB, "@Phone", e.Phone);
             DbParameter par4 = Database.AddParameter(Database.ADMIN_DB, "@Email", e.Email);
             DbParameter par5 = Database.AddParameter(Database.ADMIN_DB, "@ID", e.ID);
-            Database.ModifyData(Database.GetConnection(CreateConnectionString(claims)), sql, par1, par2, par3, par4, par5);
+            return Database.ModifyData(Database.GetConnection(CreateConnectionString(claims)), sql, par1, par2, par3, par4, par5);
         }
 
-        public static void DeleteEmployee(int id, IEnumerable<Claim> claims)
+        public static int DeleteEmployee(int id, IEnumerable<Claim> claims)
         {
             string sql = "DELETE FROM Employee WHERE ID=@ID";
             DbParameter par1 = Database.AddParameter(Database.ADMIN_DB, "@ID", id);
-            DbConnection con = Database.GetConnection(CreateConnectionString(claims));
-            Database.ModifyData(con, sql, par1);
+            return Database.ModifyData(Database.GetConnection(CreateConnectionString(claims)), sql, par1);
         }
 
         private static Employee Create(IDataRecord record)

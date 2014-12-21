@@ -62,5 +62,4 @@ namespace nmct.ba.cashlessproject.model
         }
         #endregion constructor
     }
-    }
 }

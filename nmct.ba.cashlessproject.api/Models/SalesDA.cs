@@ -35,7 +35,7 @@ namespace nmct.ba.cashlessproject.api.Models
             return list;
         }
 
-        public static List<Sale> GetSalesByID(int id, IEnumerable<Claim> claims)
+        public static Sale GetSalesByID(int id, IEnumerable<Claim> claims)
         {
             string sql = "SELECT * FROM Sales WHERE ID=@ID";
             DbParameter parID = Database.AddParameter(Database.ADMIN_DB, "@ID", id);
@@ -116,7 +116,7 @@ namespace nmct.ba.cashlessproject.api.Models
             return Database.InsertData(Database.GetConnection(CreateConnectionString(claims)), sql, par1, par2, par3, par4, par5, par6);
         }
 
-        public static void UpdateSale(Sale s, IEnumerable<Claim> claims)
+        public static int UpdateSale(Sale s, IEnumerable<Claim> claims)
         {
             string sql = "UPDATE Sales SET Timestamp=@Timestamp, CustomerID=@CustomerID, RegisterID=@RegisterID, ProductID=@ProductID, Ammount=@Ammount, TotalPrice=@TotalPrice WHERE ID=@ID";
             DbParameter par1 = Database.AddParameter(Database.ADMIN_DB, "@Timestamp", s.Timestamp);
@@ -126,14 +126,14 @@ namespace nmct.ba.cashlessproject.api.Models
             DbParameter par5 = Database.AddParameter(Database.ADMIN_DB, "@Ammount", s.Ammount);
             DbParameter par6 = Database.AddParameter(Database.ADMIN_DB, "@TotalPrice", s.TotalPrice);
             DbParameter par7 = Database.AddParameter(Database.ADMIN_DB, "@ID", s.ID);
-            Database.ModifyData(Database.GetConnection(CreateConnectionString(claims)), sql, par1, par2, par3, par4, par5, par6, par7);
+            return Database.ModifyData(Database.GetConnection(CreateConnectionString(claims)), sql, par1, par2, par3, par4, par5, par6, par7);
         }
 
-        public static void DeleteSale(int id, IEnumerable<Claim> claims)
+        public static int DeleteSale(int id, IEnumerable<Claim> claims)
         {
             string sql = "DELETE FROM Sales WHERE ID=@ID";
             DbParameter par1 = Database.AddParameter(Database.ADMIN_DB, "@ID", id);
-            Database.ModifyData(Database.GetConnection(CreateConnectionString(claims)), sql, par1);
+            return Database.ModifyData(Database.GetConnection(CreateConnectionString(claims)), sql, par1);
         }
 
         private static Sale Create(IDataRecord record, IEnumerable<Claim> claims)
@@ -141,7 +141,7 @@ namespace nmct.ba.cashlessproject.api.Models
             int cID = Int32.Parse(record["CustomerID"].ToString());
             Customer c = CustomerDA.GetCustomerByID(cID, claims);
             int rID = Int32.Parse(record["RegisterID"].ToString());
-            Register r = RegistersDA.GetRegisterByIDClient(rID, claims);
+            Register r = RegistersDA.GetRegisterByID(rID, claims);
             int pID = Int32.Parse(record["ProductID"].ToString());
             Product p = ProductsDA.GetProductByID(pID, claims);
             return new Sale()
