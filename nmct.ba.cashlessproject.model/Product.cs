@@ -14,7 +14,7 @@ namespace nmct.ba.cashlessproject.model
         #endregion fields
 
         #region properties
-        public int Id
+        public int ID
         {
             get { return _id; }
             set { if (_id != value) { _id = value; } }

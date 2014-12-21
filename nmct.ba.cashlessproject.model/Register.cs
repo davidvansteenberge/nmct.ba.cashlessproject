@@ -11,12 +11,12 @@ namespace nmct.ba.cashlessproject.model
         private int _id;
         private string _registerName;
         private string _device;
-        private string _purchaseDate;
-        private string _expiresDate;
+        private int _purchaseDate;
+        private int _expiresDate;
         #endregion fields
 
         #region properties
-        public int Id
+        public int ID
         {
             get { return _id; }
             set { if (_id != value) { _id = value; } }
@@ -31,12 +31,12 @@ namespace nmct.ba.cashlessproject.model
             get { return _device; }
             set { if (_device != value) { _device = value; } }
         }
-        public string PurchaseDate
+        public int PurchaseDate
         {
             get { return _purchaseDate; }
             set { if (_purchaseDate != value) { _purchaseDate = value; } }
         }
-        public string ExpiresDate
+        public int ExpiresDate
         {
             get { return _expiresDate; }
             set { if (_expiresDate != value) { _expiresDate = value; } }

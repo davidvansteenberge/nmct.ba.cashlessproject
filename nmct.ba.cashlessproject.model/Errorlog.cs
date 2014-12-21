@@ -5,7 +5,7 @@ using System.Text;
 
 namespace nmct.ba.cashlessproject.model
 {
-    public class Errorlog
+    public class ErrorLog
     {
         #region fields
         private int _registerId;
@@ -15,7 +15,7 @@ namespace nmct.ba.cashlessproject.model
         #endregion fields
 
         #region properties
-        public int RegisterId
+        public int RegisterID
         {
             get { return _registerId; }
             set { if (_registerId != value) { _registerId = value; } }
@@ -38,7 +38,7 @@ namespace nmct.ba.cashlessproject.model
         #endregion properties
 
         #region constructors
-        public Errorlog()
+        public ErrorLog()
         {
 
         }
