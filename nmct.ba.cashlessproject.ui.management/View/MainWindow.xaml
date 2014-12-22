@@ -13,20 +13,23 @@
         <DataTemplate DataType="{x:Type vm:LoginVM}">
             <v:Login/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:MainMenuVM}">
+            <v:MainMenu/>
+        </DataTemplate>
         <DataTemplate DataType="{x:Type vm:CustomerVM}">
             <v:ManageCustomers/>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:MainMenuVM}">
-            <v:ManageCustomers/>
+        <DataTemplate DataType="{x:Type vm:EmployeesVM}">
+            <v:ManageEmployees/>
         </DataTemplate>
-
-
+        <DataTemplate DataType="{x:Type vm:ProductsVM}">
+            <v:ManageProducts/>
+        </DataTemplate>
     </Window.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="4*"/>
             <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -38,12 +41,7 @@
         </Grid.ColumnDefinitions>
 
         <!-- De 5 hoofdknoppen -->
-        <Button Style="{StaticResource ButtonStyle}" Content="Beheer&#x0a;producten" Margin="27,14,21,10" Grid.Column="1" IsEnabled="False"/>
-        <Button Style="{StaticResource ButtonStyle}" Content="Beheer&#x0a;klanten" Margin="20,14,20,10" Grid.Column="2" IsEnabled="False"/>
-        <Button Style="{StaticResource ButtonStyle}" Content="Beheer&#x0a;kassa" Margin="22,14,20,10" Grid.Column="3" IsEnabled="False"/>
-        <Button Style="{StaticResource ButtonStyle}" Content="Statistieken&#x0a;verkoop" Margin="27,14,21,10" Grid.Column="1" Grid.Row="1" IsEnabled="False"/>
-        <Button Style="{StaticResource ButtonStyle}" Content="Beheer&#x0a;medewerkers" Margin="22,14,20,10" Grid.Column="3" Grid.Row="1" IsEnabled="False"/>
-
+        <ContentControl IsEnabled="{Binding IsLoggedIn}"  Grid.Column="1" Content="{Binding MenuPage}" HorizontalAlignment="Left" Grid.Row="0" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
         <!-- Wachtwoord wijzigen & uitloggen knoppen -->
         <Button Content="Wachtwoord wijzigen" Grid.ColumnSpan="3" Grid.Column="1" Margin="32,10,29,236" Grid.Row="2" Visibility="Hidden"/>
         <Button Content="Uitloggen" Grid.ColumnSpan="3" Grid.Column="1" Margin="32,70,29,176" Grid.Row="2" Visibility="Hidden"/>

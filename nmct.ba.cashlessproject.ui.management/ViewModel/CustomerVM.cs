@@ -48,6 +48,8 @@ namespace nmct.ba.cashlessproject.ui.management.ViewModel
                 {
                     string json = await response.Content.ReadAsStringAsync();
                     Customers = JsonConvert.DeserializeObject<ObservableCollection<Customer>>(json);
+                    if (Customers.Count > 0)
+                        SelectedCustomer = Customers.First();
                 }
             }
         }

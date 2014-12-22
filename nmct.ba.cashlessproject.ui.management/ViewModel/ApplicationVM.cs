@@ -25,6 +25,22 @@ namespace nmct.ba.cashlessproject.ui.management.ViewModel
             Pages.Add(new SalesVM());
             CurrentPage = Pages[0];*/
             CurrentPage = new LoginVM();
+            MenuPage = new MainMenuVM();
+        }
+
+        private Boolean _isLoggedIn = false;
+        public Boolean IsLoggedIn
+        {
+            get { return _isLoggedIn; }
+            set { if (_isLoggedIn != value) { _isLoggedIn = value; OnPropertyChanged("IsLoggedIn"); } }
+        }
+
+
+        private object menuPage;
+        public object MenuPage
+        {
+            get { return menuPage; }
+            set { if (menuPage != value) { menuPage = value; OnPropertyChanged("MenuPage"); } }
         }
 
         private object currentPage;

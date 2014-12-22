@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace nmct.ba.cashlessproject.ui.management.ViewModel
@@ -49,6 +50,16 @@ namespace nmct.ba.cashlessproject.ui.management.ViewModel
             get { return new RelayCommand(GoToManageEmployees); }
         }
 
+        public ICommand LogoutCommand
+        {
+            get { return new RelayCommand(Logout); }
+        }
+
+        public ICommand ChangePasswordCommand
+        {
+            get { return new RelayCommand(ChangePassword); }
+        }
+
 
 
 
@@ -85,6 +96,18 @@ namespace nmct.ba.cashlessproject.ui.management.ViewModel
         {
             ApplicationVM appvm = App.Current.MainWindow.DataContext as ApplicationVM;
             appvm.ChangePage(new EmployeesVM());
+        }
+
+        private void Logout()
+        {
+            ApplicationVM appvm = App.Current.MainWindow.DataContext as ApplicationVM;
+            throw new NotImplementedException("MainMenuVM: Logout");
+        }
+
+        private void ChangePassword()
+        {
+            ApplicationVM appvm = App.Current.MainWindow.DataContext as ApplicationVM;
+            throw new NotImplementedException("MainMenuVM: ChangePassword");
         }
     }
 }

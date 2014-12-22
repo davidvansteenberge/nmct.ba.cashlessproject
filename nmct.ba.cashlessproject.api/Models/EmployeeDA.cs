@@ -51,8 +51,8 @@ namespace nmct.ba.cashlessproject.api.Models
             string sql = "INSERT INTO Employee VALUES(@EmployeeName,@Address,@Email,@Phone)";
             DbParameter par1 = Database.AddParameter(Database.ADMIN_DB, "@EmployeeName", e.EmployeeName);
             DbParameter par2 = Database.AddParameter(Database.ADMIN_DB, "@Address", e.Address);
-            DbParameter par4 = Database.AddParameter(Database.ADMIN_DB, "@Email", e.Email);
-            DbParameter par3 = Database.AddParameter(Database.ADMIN_DB, "@Phone", e.Phone);
+            DbParameter par3 = Database.AddParameter(Database.ADMIN_DB, "@Email", e.Email);
+            DbParameter par4 = Database.AddParameter(Database.ADMIN_DB, "@Phone", e.Phone);
             return Database.InsertData(Database.GetConnection(CreateConnectionString(claims)), sql, par1, par2, par3, par4);
         }
 
@@ -66,7 +66,7 @@ namespace nmct.ba.cashlessproject.api.Models
             DbParameter par5 = Database.AddParameter(Database.ADMIN_DB, "@ID", e.ID);
             return Database.ModifyData(Database.GetConnection(CreateConnectionString(claims)), sql, par1, par2, par3, par4, par5);
         }
-
+    
         public static int DeleteEmployee(int id, IEnumerable<Claim> claims)
         {
             string sql = "DELETE FROM Employee WHERE ID=@ID";
