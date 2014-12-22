@@ -48,21 +48,21 @@ namespace nmct.ba.cashlessproject.api.Models
 
         public static int InsertEmployee(Employee e, IEnumerable<Claim> claims)
         {
-            string sql = "INSERT INTO Employee VALUES(@EmployeeName,@Address,@Phone,@Email)";
+            string sql = "INSERT INTO Employee VALUES(@EmployeeName,@Address,@Email,@Phone)";
             DbParameter par1 = Database.AddParameter(Database.ADMIN_DB, "@EmployeeName", e.EmployeeName);
             DbParameter par2 = Database.AddParameter(Database.ADMIN_DB, "@Address", e.Address);
-            DbParameter par3 = Database.AddParameter(Database.ADMIN_DB, "@Phone", e.Phone);
             DbParameter par4 = Database.AddParameter(Database.ADMIN_DB, "@Email", e.Email);
+            DbParameter par3 = Database.AddParameter(Database.ADMIN_DB, "@Phone", e.Phone);
             return Database.InsertData(Database.GetConnection(CreateConnectionString(claims)), sql, par1, par2, par3, par4);
         }
 
         public static int UpdateEmployee(Employee e, IEnumerable<Claim> claims)
         {
-            string sql = "UPDATE Employee SET EmployeeName=@EmployeeName, Address=@Address, Phone=@Phone, Email=@Email WHERE ID=@ID";
+            string sql = "UPDATE Employee SET EmployeeName=@EmployeeName, Address=@Address, Email=@Email, Phone=@Phone WHERE ID=@ID";
             DbParameter par1 = Database.AddParameter(Database.ADMIN_DB, "@EmployeeName", e.EmployeeName);
             DbParameter par2 = Database.AddParameter(Database.ADMIN_DB, "@Address", e.Address);
-            DbParameter par3 = Database.AddParameter(Database.ADMIN_DB, "@Phone", e.Phone);
             DbParameter par4 = Database.AddParameter(Database.ADMIN_DB, "@Email", e.Email);
+            DbParameter par3 = Database.AddParameter(Database.ADMIN_DB, "@Phone", e.Phone);
             DbParameter par5 = Database.AddParameter(Database.ADMIN_DB, "@ID", e.ID);
             return Database.ModifyData(Database.GetConnection(CreateConnectionString(claims)), sql, par1, par2, par3, par4, par5);
         }
