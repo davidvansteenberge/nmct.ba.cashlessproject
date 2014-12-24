@@ -7,7 +7,7 @@
     <ProjectGuid>{84E5B35B-12E9-44CC-9A5C-1FB4C1B47E4B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>nmct.ba.cashlessproject.ui</RootNamespace>
+    <RootNamespace>nmct.ba.cashlessproject.ui.management</RootNamespace>
     <AssemblyName>nmct.ba.cashlessproject.ui</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -93,12 +93,12 @@
     <Compile Include="ViewModel\ProductsVM.cs" />
     <Compile Include="ViewModel\RegistersVM.cs" />
     <Compile Include="ViewModel\SalesVM.cs" />
-    <Compile Include="View\BeheerKlanten.xaml.cs">
-      <DependentUpon>BeheerKlanten.xaml</DependentUpon>
+    <Compile Include="View\ManageCustomers.xaml.cs">
+      <DependentUpon>ManageCustomers.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\converters\StringToImageConverter.cs" />
-    <Compile Include="View\Klant.xaml.cs">
-      <DependentUpon>Klant.xaml</DependentUpon>
+    <Compile Include="View\Customer.xaml.cs">
+      <DependentUpon>Customer.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
@@ -115,11 +115,11 @@
     </Compile>
     <Compile Include="ViewModel\IPage.cs" />
     <Compile Include="ViewModel\ObservableObject.cs" />
-    <Page Include="View\BeheerKlanten.xaml">
+    <Page Include="View\ManageCustomers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Klant.xaml">
+    <Page Include="View\Customer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

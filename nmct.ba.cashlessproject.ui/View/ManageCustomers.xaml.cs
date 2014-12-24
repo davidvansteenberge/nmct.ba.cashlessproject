@@ -16,13 +16,13 @@ using System.Windows.Shapes;
 namespace nmct.ba.cashlessproject.ui.View
 {
     /// <summary>
-    /// Interaction logic for Klant.xaml
+    /// Interaction logic for ManageCustomers.xaml
     /// </summary>
-    public partial class Klant : UserControl
+    public partial class ManageCustomers : UserControl
     {
-        public Klant()
+        public ManageCustomers()
         {
-            InitializeComponent();
+            //InitializeComponent();
         }
     }
 }

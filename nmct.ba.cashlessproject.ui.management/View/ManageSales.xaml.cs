@@ -13,16 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace nmct.ba.cashlessproject.ui.View
+namespace nmct.ba.cashlessproject.ui.management.View
 {
     /// <summary>
-    /// Interaction logic for BeheerKlanten.xaml
+    /// Interaction logic for ManageSales.xaml
     /// </summary>
-    public partial class BeheerKlanten : UserControl
+    public partial class ManageSales : UserControl
     {
-        public BeheerKlanten()
+        public ManageSales()
         {
-            //InitializeComponent();
+            InitializeComponent();
         }
     }
 }

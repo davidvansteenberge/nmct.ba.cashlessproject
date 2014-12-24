@@ -95,6 +95,7 @@
     <Compile Include="ViewModel\RegistersVM.cs" />
     <Compile Include="ViewModel\SalesVM.cs" />
     <Compile Include="View\converters\StringToImageConverter.cs" />
+    <Compile Include="View\converters\UnixConverter.cs" />
     <Compile Include="View\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -109,6 +110,9 @@
     </Compile>
     <Compile Include="View\ManageProducts.xaml.cs">
       <DependentUpon>ManageProducts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManageSales.xaml.cs">
+      <DependentUpon>ManageSales.xaml</DependentUpon>
     </Compile>
     <Page Include="View\Login.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -139,6 +143,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ManageProducts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ManageSales.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

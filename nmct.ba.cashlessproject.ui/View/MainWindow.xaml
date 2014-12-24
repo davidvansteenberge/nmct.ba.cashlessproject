@@ -14,10 +14,10 @@
             <v:Login/>
         </DataTemplate>
         <DataTemplate DataType="{x:Type vm:CustomerVM}">
-            <v:Klant/>
+            <v:Customer/>
         </DataTemplate>
         <DataTemplate DataType="{x:Type vm:MainMenuVM}">
-            <v:BeheerKlanten/>
+            <v:ManageCustomers/>
         </DataTemplate>
 
 

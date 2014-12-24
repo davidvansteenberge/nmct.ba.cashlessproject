@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Thinktecture.IdentityModel.Client;
 
-namespace nmct.ba.cashlessproject.ui.ViewModel
+namespace nmct.ba.cashlessproject.ui.management.ViewModel
 {
     class ApplicationVM : ObservableObject
     {

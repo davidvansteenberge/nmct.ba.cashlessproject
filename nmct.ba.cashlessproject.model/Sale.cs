@@ -9,11 +9,11 @@ namespace nmct.ba.cashlessproject.model
     {
         #region fields
         private int _id;
-        private string _timestamp;
-        private Customer _customerID;
-        private Register _registerID;
-        private Product _productID;
-        private int _ammount;
+        private long _timestamp;
+        private int _customerID;
+        private int _registerID;
+        private int _productID;
+        private int _amount;
         private double _totalPrice;
         #endregion fields
 
@@ -23,30 +23,30 @@ namespace nmct.ba.cashlessproject.model
             get { return _id; }
             set { if (_id != value) { _id = value; } }
         }
-        public string Timestamp
+        public long Timestamp
         {
             get { return _timestamp; }
             set { if (_timestamp != value) { _timestamp = value; } }
         }
-        public Customer CustomerID
+        public int CustomerID
         {
             get { return _customerID; }
             set { if (_customerID != value) { _customerID = value; } }
         }
-        public Register RegisterID
+        public int RegisterID
         {
             get { return _registerID; }
             set { if (_registerID != value) { _registerID = value; } }
         }
-        public Product  ProductID
+        public int  ProductID
         {
             get { return _productID; }
             set { if (_productID != value) { _productID = value; } }
         }
-         public int  Ammount
+         public int  Amount
         {
-            get { return _ammount; }
-            set { if (_ammount != value) { _ammount = value; } }
+            get { return _amount; }
+            set { if (_amount != value) { _amount = value; } }
         }
         public double TotalPrice
         {

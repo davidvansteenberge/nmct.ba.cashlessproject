@@ -57,7 +57,7 @@ namespace nmct.ba.cashlessproject.ui.ViewModel
 
             if (!ApplicationVM.token.IsError)
             {
-                appvm.ChangePage(new MainMenuVM());
+                appvm.ChangePage(new EmployeesVM());
             }
             else
             {

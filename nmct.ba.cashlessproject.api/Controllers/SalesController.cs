@@ -16,6 +16,7 @@ namespace nmct.ba.cashlessproject.api.Controllers
             return SalesDA.GetSales(p.Claims);
         }
 
+        /*
         public List<Sale> Get(Customer c)
         {
             ClaimsPrincipal p = RequestContext.Principal as ClaimsPrincipal;
@@ -39,7 +40,7 @@ namespace nmct.ba.cashlessproject.api.Controllers
             ClaimsPrincipal p = RequestContext.Principal as ClaimsPrincipal;
             return SalesDA.GetSalesByCustRegProdID(c,r,pr,p.Claims);
         }
-
+        */
         public HttpResponseMessage Post(Sale s)
         {
             ClaimsPrincipal p = RequestContext.Principal as ClaimsPrincipal;
