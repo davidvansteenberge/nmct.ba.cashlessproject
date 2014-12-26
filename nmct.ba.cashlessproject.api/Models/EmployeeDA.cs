@@ -39,7 +39,7 @@ namespace nmct.ba.cashlessproject.api.Models
         {
             string sql = "SELECT * FROM Employee WHERE ID=@ID";
             DbParameter parID = Database.AddParameter(Database.ADMIN_DB, "@ID", id);
-            DbDataReader reader = Database.GetData(Database.GetConnection(CreateConnectionString(claims)), sql);
+            DbDataReader reader = Database.GetData(Database.GetConnection(CreateConnectionString(claims)), sql, parID);
             reader.Read();
             Employee e = Create(reader);
             reader.Close();

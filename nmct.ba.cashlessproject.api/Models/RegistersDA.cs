@@ -44,6 +44,7 @@ namespace nmct.ba.cashlessproject.api.Models
             string sql = "SELECT * FROM Register WHERE ID=@ID";
             DbParameter parID = Database.AddParameter(Database.ADMIN_DB, "@ID", id);
             DbDataReader reader = Database.GetData(Database.GetConnection(CreateConnectionString(claims)), sql, parID);
+            reader.Read();
             reg = CreateClient(reader);
             reader.Close();
             return reg;
