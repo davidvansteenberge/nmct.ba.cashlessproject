@@ -27,7 +27,7 @@ namespace nmct.ba.cashlessproject.api.Models
         public static List<Register> GetRegisters(IEnumerable<Claim> claims)
         {
             List<Register> list = new List<Register>();
-            string sql = "SELECT * FROM Registers";
+            string sql = "SELECT * FROM Register";
             DbDataReader reader = Database.GetData(Database.GetConnection(CreateConnectionString(claims)), sql);
 
             while (reader.Read())
@@ -41,7 +41,7 @@ namespace nmct.ba.cashlessproject.api.Models
         public static Register GetRegisterByID(int id, IEnumerable<Claim> claims)
         {
             Register reg = new Register();
-            string sql = "SELECT * FROM Registers WHERE ID=@ID";
+            string sql = "SELECT * FROM Register WHERE ID=@ID";
             DbParameter parID = Database.AddParameter(Database.ADMIN_DB, "@ID", id);
             DbDataReader reader = Database.GetData(Database.GetConnection(CreateConnectionString(claims)), sql, parID);
             reg = CreateClient(reader);
@@ -51,7 +51,7 @@ namespace nmct.ba.cashlessproject.api.Models
 
         public static int InsertRegister(Register reg, IEnumerable<Claim> claims)
         {
-            string sql = "INSERT INTO Registers VALUES(@RegisterName,@Device,@PurchaseDate,@ExpiresDate)";
+            string sql = "INSERT INTO Register VALUES(@RegisterName,@Device,@PurchaseDate,@ExpiresDate)";
             DbParameter par1 = Database.AddParameter(Database.ADMIN_DB, "@RegisterName", reg.RegisterName);
             DbParameter par2 = Database.AddParameter(Database.ADMIN_DB, "@Device", reg.Device);
             return Database.InsertData(Database.GetConnection(CreateConnectionString(claims)), sql, par1, par2);
@@ -59,7 +59,7 @@ namespace nmct.ba.cashlessproject.api.Models
 
         public static int UpdateRegister(Register reg, IEnumerable<Claim> claims)
         {
-            string sql = "UPDATE Registers SET RegisterName=@RegisterName, Device=@Device WHERE ID=@ID";
+            string sql = "UPDATE Register SET RegisterName=@RegisterName, Device=@Device WHERE ID=@ID";
             DbParameter par1 = Database.AddParameter(Database.ADMIN_DB, "@RegisterName", reg.RegisterName);
             DbParameter par2 = Database.AddParameter(Database.ADMIN_DB, "@Device", reg.Device);
             DbParameter parID = Database.AddParameter(Database.ADMIN_DB, "@ID", reg.ID);
@@ -68,7 +68,7 @@ namespace nmct.ba.cashlessproject.api.Models
 
         public static int DeleteRegister(int id, IEnumerable<Claim> claims)
         {
-            string sql = "DELETE FROM Registers WHERE ID=@ID";
+            string sql = "DELETE FROM Register WHERE ID=@ID";
             DbParameter par1 = Database.AddParameter(Database.ADMIN_DB, "@ID", id);
             return Database.ModifyData(Database.GetConnection(CreateConnectionString(claims)), sql, par1);
         }
@@ -89,7 +89,7 @@ namespace nmct.ba.cashlessproject.api.Models
         public static List<Register> GetRegisters()
         {
             List<Register> list = new List<Register>();
-            string sql = "SELECT * FROM Registers";
+            string sql = "SELECT * FROM Register";
             DbDataReader reader = Database.GetData(Database.GetConnection(Database.ADMIN_DB), sql);
 
             while (reader.Read())
@@ -103,7 +103,7 @@ namespace nmct.ba.cashlessproject.api.Models
         public static Register GetRegisterByID(int id)
         {
             Register reg = new Register();
-            string sql = "SELECT * FROM Registers WHERE ID=@ID";
+            string sql = "SELECT * FROM Register WHERE ID=@ID";
             DbParameter parID = Database.AddParameter(Database.ADMIN_DB, "@ID", id);
             DbDataReader reader = Database.GetData(Database.GetConnection(Database.ADMIN_DB), sql, parID);
             while (reader.Read())
@@ -116,7 +116,7 @@ namespace nmct.ba.cashlessproject.api.Models
 
         public static int InsertRegister(Register reg)
         {
-            string sql = "INSERT INTO Registers VALUES(@RegisterName,@Device,@PurchaseDate,@ExpiresDate)";
+            string sql = "INSERT INTO Register VALUES(@RegisterName,@Device,@PurchaseDate,@ExpiresDate)";
             DbParameter par1 = Database.AddParameter(Database.ADMIN_DB, "@RegisterName", reg.RegisterName);
             DbParameter par2 = Database.AddParameter(Database.ADMIN_DB, "@Device", reg.Device);
             DbParameter par3 = Database.AddParameter(Database.ADMIN_DB, "@PurchaseDate", reg.PurchaseDate);
@@ -126,7 +126,7 @@ namespace nmct.ba.cashlessproject.api.Models
 
         public static int UpdateRegister(Register reg)
         {
-            string sql = "UPDATE Registers SET RegisterName=@RegisterName, Device=@Device, PurchaseDate=@PurchaseDate, ExpiresDate=@ExpiresDate WHERE ID=@ID";
+            string sql = "UPDATE Register SET RegisterName=@RegisterName, Device=@Device, PurchaseDate=@PurchaseDate, ExpiresDate=@ExpiresDate WHERE ID=@ID";
             DbParameter par1 = Database.AddParameter(Database.ADMIN_DB, "@RegisterName", reg.RegisterName);
             DbParameter par2 = Database.AddParameter(Database.ADMIN_DB, "@Device", reg.Device);
             DbParameter par3 = Database.AddParameter(Database.ADMIN_DB, "@PurchaseDate", reg.PurchaseDate);
@@ -137,7 +137,7 @@ namespace nmct.ba.cashlessproject.api.Models
 
         public static int DeleteRegister(int id)
         {
-            string sql = "DELETE FROM Registers WHERE ID=@ID";
+            string sql = "DELETE FROM Register WHERE ID=@ID";
             DbParameter par1 = Database.AddParameter(Database.ADMIN_DB, "@ID", id);
             return Database.ModifyData(Database.GetConnection(Database.ADMIN_DB), sql, par1);
         }

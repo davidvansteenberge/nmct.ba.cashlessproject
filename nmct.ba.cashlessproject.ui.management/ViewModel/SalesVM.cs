@@ -71,7 +71,7 @@ namespace nmct.ba.cashlessproject.ui.management.ViewModel
             using (HttpClient client = new HttpClient())
             {
                 client.SetBearerToken(ApplicationVM.token.AccessToken);
-                HttpResponseMessage response = await client.GetAsync("http://localhost:27809/api/registerclient");
+                HttpResponseMessage response = await client.GetAsync("http://localhost:27809/api/registersclient");
                 if (response.IsSuccessStatusCode)
                 {
                     string json = await response.Content.ReadAsStringAsync();
