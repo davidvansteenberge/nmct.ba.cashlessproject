@@ -148,9 +148,14 @@ namespace nmct.ba.cashlessproject.ui.management.ViewModel
         public DateTime SelectedStartDate
         {
             get { return _selectedStartDate; }
-            set { if (_selectedStartDate != value) {
-                DateTime dt = new DateTime(value.Year, value.Month, value.Day, 0, 0, 0, 1);
-                dt = value; OnPropertyChanged("SelectedStartDate"); FilterSales(); } }
+            set
+            {
+                if (_selectedStartDate != value)
+                {
+                    DateTime dt = new DateTime(value.Year, value.Month, value.Day, 0, 0, 0, 1);
+                    _selectedStartDate = dt; OnPropertyChanged("SelectedStartDate"); FilterSales();
+                }
+            }
         }
 
         private DateTime _selectedEndDate;
