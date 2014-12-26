@@ -217,6 +217,7 @@
     <Compile Include="Controllers\OrganisationController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\RegistersClientController.cs" />
+    <Compile Include="Controllers\RegistersEmployeeController.cs" />
     <Compile Include="Controllers\RegisterServerController.cs" />
     <Compile Include="Controllers\SalesController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -233,8 +234,8 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\OrganisationDA.cs" />
-    <Compile Include="Models\Organisation_RegisterDA.cs" />
     <Compile Include="Models\ProductsDA.cs" />
+    <Compile Include="Models\RegisterEmployeeDA.cs" />
     <Compile Include="Models\RegistersDA.cs" />
     <Compile Include="Models\SalesDA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -251,6 +252,8 @@
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Data\create.txt" />
+    <Content Include="Data\fill.txt" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

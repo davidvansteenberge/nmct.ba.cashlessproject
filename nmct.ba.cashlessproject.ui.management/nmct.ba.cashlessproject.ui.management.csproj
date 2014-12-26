@@ -111,6 +111,9 @@
     <Compile Include="View\ManageProducts.xaml.cs">
       <DependentUpon>ManageProducts.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ManageRegisters.xaml.cs">
+      <DependentUpon>ManageRegisters.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ManageSales.xaml.cs">
       <DependentUpon>ManageSales.xaml</DependentUpon>
     </Compile>
@@ -143,6 +146,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ManageProducts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ManageRegisters.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

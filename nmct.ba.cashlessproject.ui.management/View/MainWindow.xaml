@@ -28,6 +28,9 @@
         <DataTemplate DataType="{x:Type vm:SalesVM}">
             <v:ManageSales/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:RegistersVM}">
+            <v:ManageRegisters/>
+        </DataTemplate>
     </Window.Resources>
 
     <Grid>

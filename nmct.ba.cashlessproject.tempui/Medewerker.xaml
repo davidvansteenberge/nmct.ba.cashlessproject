@@ -25,16 +25,16 @@
         <GroupBox Header="Identificeer klant" Margin="10,10,10,9" Grid.Row="1">
             <StackPanel>
                 <Button Content="Identificeer klant" Margin="100,40,100,20" Height="50px" IsEnabled="False"/>
-                <TextBlock Margin="10,10,10,10">Naam klant:</TextBlock>
-                <TextBox Margin="10,0,10,10" Height="25"></TextBox>
+                <TextBlock Text="Naam klant:" Margin="10,10,10,10"/>
+                <TextBox Margin="10,0,10,10" Height="25"/>
             </StackPanel>
         </GroupBox>
 
-        <TextBlock Grid.Column="1" Margin="10,20,358,207" Height="24" HorizontalAlignment="Center" VerticalAlignment="Center">Saldo klant:</TextBlock>
+        <TextBlock Text="Saldo klant:" Grid.Column="1" Margin="10,20,358,207" Height="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBox Grid.Column="1" Margin="90,19,10,207"/>
 
         <GroupBox Header="Kies product" Grid.Column="1" Margin="19,64,10,85" Grid.RowSpan="2">
-            <ListBox ScrollViewer.VerticalScrollBarVisibility="Visible"></ListBox>
+            <ListBox ScrollViewer.VerticalScrollBarVisibility="Visible"/>
         </GroupBox>
         
         <Button Content="Geef bestelling door" Grid.Column="1" Margin="19,169,10,25" Grid.Row="1" IsEnabled="False"/>
