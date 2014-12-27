@@ -36,7 +36,17 @@
         <TextBlock Text="Tot:" Grid.Column="1" Margin="232,32,183,202" VerticalAlignment="Center"/>
         <DatePicker Name="dpEndDate" Grid.Column="1" Margin="270,25,49,195" SelectedDate="{Binding SelectedEndDate}"/>
 
-        <GroupBox Header="Verkoop" Grid.Column="1" Margin="10,78,10,10" Grid.RowSpan="2">
+        <GroupBox Header="{Binding}" Grid.Column="1" Margin="10,78,10,10" Grid.RowSpan="2">
+            <GroupBox.HeaderTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>
+                            <Run Text="Verkopen: "/>
+                            <Run Text="{Binding Sales.Count, Mode=OneWay}"/>
+                        </TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </GroupBox.HeaderTemplate>
             <ListBox ScrollViewer.VerticalScrollBarVisibility="Visible" ItemsSource="{Binding Sales}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
