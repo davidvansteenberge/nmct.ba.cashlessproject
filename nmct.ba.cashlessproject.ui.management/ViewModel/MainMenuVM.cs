@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -101,7 +102,7 @@ namespace nmct.ba.cashlessproject.ui.management.ViewModel
         private void Logout()
         {
             ApplicationVM appvm = App.Current.MainWindow.DataContext as ApplicationVM;
-            throw new NotImplementedException("MainMenuVM: Logout");
+            ApplicationVM.token = null;
         }
 
         private void ChangePassword()
