@@ -26,7 +26,7 @@ namespace nmct.ba.cashlessproject.api.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=LUNALAPPY\\SQLEXPRESS;Initial Catalog=CashlessAdmin;Integrated Securit" +
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DAVIDLAPTOP\\SQLEXPRESS;Initial Catalog=CashlessAdmin;Integrated Securit" +
             "y=True")]
         public string AdminDB
         {
