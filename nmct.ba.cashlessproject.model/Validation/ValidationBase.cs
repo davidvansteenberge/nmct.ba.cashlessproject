@@ -35,7 +35,7 @@ namespace nmct.ba.cashlessproject.model.Validation
                 return _errors.SelectMany(err => err.Value.ToList());
         }
 
-        public void OnErrorsChanged(string propertyName)
+        private void OnErrorsChanged(string propertyName)
         {
             if (ErrorsChanged != null)
                 ErrorsChanged(this, new DataErrorsChangedEventArgs(propertyName));
@@ -58,7 +58,7 @@ namespace nmct.ba.cashlessproject.model.Validation
             }
         }
 
-        public void Validate()
+        private void Validate()
         {
             lock (_lock)
             {

@@ -29,42 +29,42 @@ namespace nmct.ba.cashlessproject.model
         public long Timestamp
         {
             get { return _timestamp; }
-            set { if (_timestamp != value) { _timestamp = value; } }
+            set { if (_timestamp != value) { _timestamp = value; ValidateProperty(value); } }
         }
         [Required(ErrorMessage = "verplicht")]
         [MinValue(0, ErrorMessage = "hoger dan 0")]
         public int CustomerID
         {
             get { return _customerID; }
-            set { if (_customerID != value) { _customerID = value; } }
+            set { if (_customerID != value) { _customerID = value; ValidateProperty(value); } }
         }
         [Required(ErrorMessage = "verplicht")]
         [MinValue(0, ErrorMessage = "hoger dan 0")]
         public int RegisterID
         {
             get { return _registerID; }
-            set { if (_registerID != value) { _registerID = value; } }
+            set { if (_registerID != value) { _registerID = value; ValidateProperty(value); } }
         }
         [Required(ErrorMessage = "verplicht")]
         [MinValue(0, ErrorMessage = "hoger dan 0")]
         public int  ProductID
         {
             get { return _productID; }
-            set { if (_productID != value) { _productID = value; } }
+            set { if (_productID != value) { _productID = value; ValidateProperty(value); } }
         }
         [Required(ErrorMessage = "verplicht")]
         [MinValue(0, ErrorMessage = "hoger dan 0")]
          public int  Amount
         {
             get { return _amount; }
-            set { if (_amount != value) { _amount = value; } }
+            set { if (_amount != value) { _amount = value; ValidateProperty(value); } }
         }
         [Required(ErrorMessage = "verplicht")]
         [Range(0.01,100.00,ErrorMessage="tussen 0.01 en 100")]
         public double TotalPrice
         {
             get { return _totalPrice; }
-            set { if (_totalPrice != value) { _totalPrice = value; } }
+            set { if (_totalPrice != value) { _totalPrice = value; ValidateProperty(value); } }
         }
         #endregion properties
 

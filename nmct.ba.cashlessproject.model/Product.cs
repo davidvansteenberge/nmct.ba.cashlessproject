@@ -27,14 +27,14 @@ namespace nmct.ba.cashlessproject.model
         public string ProductName
         {
             get { return _productName; }
-            set { if (_productName != value) { _productName = value; } }
+            set { if (_productName != value) { _productName = value; ValidateProperty(value); } }
         }
         [Required(ErrorMessage = "verplicht")]
         [Range(0.01,100.00,ErrorMessage="tussen 0.01 en 100")]
         public double Price
         {
             get { return _price; }
-            set { if (_price != value) { _price = value; } }
+            set { if (_price != value) { _price = value; ValidateProperty(value); } }
         }
         #endregion properties
 

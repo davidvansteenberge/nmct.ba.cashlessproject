@@ -21,25 +21,25 @@ namespace nmct.ba.cashlessproject.model
         public Register RegisterID
         {
             get { return _registerID; }
-            set { if (_registerID != value) { _registerID = value; } }
+            set { if (_registerID != value) { _registerID = value; ValidateProperty(value); } }
         }
         [Required(ErrorMessage = "verplicht")]
         public Employee EmployeeID
         {
             get { return _employeeID; }
-            set { if (_employeeID != value) { _employeeID = value; } }
+            set { if (_employeeID != value) { _employeeID = value; ValidateProperty(value); } }
         }
         [Required(ErrorMessage = "verplicht")]
         public long TimeFrom
         {
             get { return _timeFrom; }
-            set { if (_timeFrom != value) { _timeFrom = value; } }
+            set { if (_timeFrom != value) { _timeFrom = value; ValidateProperty(value); } }
         }
         [Required(ErrorMessage = "verplicht")]
         public long TimeTill
         {
             get { return _timeTill; }
-            set { if (_timeTill != value) { _timeTill = value; } }
+            set { if (_timeTill != value) { _timeTill = value; ValidateProperty(value); } }
         }
         #endregion properties
 
