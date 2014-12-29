@@ -1,13 +1,11 @@
-﻿using GalaSoft.MvvmLight.Command;
+﻿using GalaSoft.MvvmLight.CommandWpf;
 using Newtonsoft.Json;
 using nmct.ba.cashlessproject.model;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace nmct.ba.cashlessproject.ui.management.ViewModel
@@ -65,7 +63,23 @@ namespace nmct.ba.cashlessproject.ui.management.ViewModel
 
         public ICommand SaveEmployeeCommand
         {
-            get { return new RelayCommand(SaveEmployee); }
+            get { return new RelayCommand(SaveEmployee, canExecuteSave); }
+        }
+
+        private bool canExecuteSave()
+        {
+            if (SelectedEmployee != null)
+            {
+                if (SelectedEmployee.IsValid == true)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return false;
         }
 
         public ICommand DeleteEmployeeCommand
@@ -75,6 +89,8 @@ namespace nmct.ba.cashlessproject.ui.management.ViewModel
 
         private void NewEmployee()
         {
+            if (Employees == null)
+                Employees = new ObservableCollection<Employee>();
             Employee e = new Employee();
             Employees.Add(e);
             SelectedEmployee = e;

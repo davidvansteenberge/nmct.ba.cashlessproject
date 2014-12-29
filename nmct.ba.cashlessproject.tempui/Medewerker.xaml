@@ -11,7 +11,7 @@
             <ColumnDefinition Width="5*"/>
             <ColumnDefinition Width="6*"/>
         </Grid.ColumnDefinitions>
-
+        <!-- USER CONTROL LOGIN HERGEBRUIKEN-->
         <GroupBox Header="Identificeer medewerker" Margin="10,10,10,10">
             <StackPanel>
                 <TextBlock Margin="10,10,10,10">Gebruikersnaam:</TextBlock>
@@ -22,6 +22,7 @@
             </StackPanel>
         </GroupBox>
 
+        
         <GroupBox Header="Identificeer klant" Margin="10,10,10,9" Grid.Row="1">
             <StackPanel>
                 <Button Content="Identificeer klant" Margin="100,40,100,20" Height="50px" IsEnabled="False"/>

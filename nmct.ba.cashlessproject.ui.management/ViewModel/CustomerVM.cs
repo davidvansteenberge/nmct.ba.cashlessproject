@@ -3,16 +3,12 @@ using Microsoft.Win32;
 using Newtonsoft.Json;
 using nmct.ba.cashlessproject.model;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using System.Windows.Media.Imaging;
 
 namespace nmct.ba.cashlessproject.ui.management.ViewModel
 {
@@ -68,7 +64,22 @@ namespace nmct.ba.cashlessproject.ui.management.ViewModel
         
         public ICommand SaveCustomerCommand
         {
-            get { return new RelayCommand(SaveCustomer); }
+            get { return new RelayCommand(SaveCustomer,canExecuteSave); }
+        }
+
+        private bool canExecuteSave() {
+            if (SelectedCustomer != null)
+            {
+                if (SelectedCustomer.IsValid == true)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return false;
         }
 
         public ICommand DeleteCustomerCommand
@@ -83,6 +94,8 @@ namespace nmct.ba.cashlessproject.ui.management.ViewModel
 
         private void NewCustomer()
         {
+            if (Customers == null)
+                Customers = new ObservableCollection<Customer>();
             Customer c = new Customer();
             Customers.Add(c);
             SelectedCustomer = c;
