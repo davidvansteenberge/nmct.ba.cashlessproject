@@ -18,7 +18,7 @@ namespace nmct.ba.cashlessproject.api.Models
             string dblogin = claims.FirstOrDefault(c => c.Type == "dblogin").Value;
             string dbpass = claims.FirstOrDefault(c => c.Type == "dbpass").Value;
             string dbname = claims.FirstOrDefault(c => c.Type == "dbname").Value;
-            return Database.CreateConnectionString("System.Data.SqlClient", @"LUNALAPPY\SQLEXPRESS", Cryptography.Decrypt(dbname), Cryptography.Decrypt(dblogin), Cryptography.Decrypt(dbpass));
+            return Database.CreateConnectionString("System.Data.SqlClient", @"DAVIDLAPTOP\SQLEXPRESS", Cryptography.Decrypt(dbname), Cryptography.Decrypt(dblogin), Cryptography.Decrypt(dbpass));
         }
 
         public static List<Customer> GetCustomers(IEnumerable<Claim> claims)
