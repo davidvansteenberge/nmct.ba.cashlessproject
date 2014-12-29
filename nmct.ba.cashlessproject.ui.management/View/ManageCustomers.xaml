@@ -5,6 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:vm="clr-namespace:nmct.ba.cashlessproject.ui.management.ViewModel"
              xmlns:c="clr-namespace:nmct.ba.cashlessproject.ui.management.View.converters"
+             xmlns:rules="clr-namespace:nmct.ba.cashlessproject.ui.management.View.rules"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
              mc:Ignorable="d" 
              d:DesignHeight="830" d:DesignWidth="530"
              Height="530" Width="830">
@@ -38,14 +40,14 @@
         <GroupBox Header="Klanten wijzigen" Grid.Column="1" Margin="10" Grid.RowSpan="2">
 
             <StackPanel>
-                <TextBlock Text="Naam: " Margin="20,15,0,0" />
-                <TextBox Text="{Binding SelectedCustomer.CustomerName}"  Height="25" Margin="20,0,10,0"/>
+                <TextBlock Text="Naam:" Margin="20,15,0,0" />
+                <TextBox Text="{Binding SelectedCustomer.CustomerName, NotifyOnValidationError=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextboxStyle}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}"/>
 
                 <TextBlock Text="Adres:"  Margin="20, 15, 0, 0"/>
-                <TextBox Text="{Binding SelectedCustomer.Address}" Height="25" Margin="20,0,10,0"/>
+                <TextBox Text="{Binding SelectedCustomer.Address, NotifyOnValidationError=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextboxStyle}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}"/>
                 
                 <TextBlock Text="Saldo:"  Margin="20, 15, 0, 0"/>
-                <TextBox Text="{Binding SelectedCustomer.Balance}" Height="25" Margin="20,0,10,0"/>
+                <TextBox Text="{Binding SelectedCustomer.Balance, NotifyOnValidationError=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextboxStyle}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}"/>
                 
                 <TextBlock Text="Afbeelding:"  Margin="20, 15, 0, 0"/>
                 <Button Command="{Binding AddImageCommand}" Margin="20,0,10,0">

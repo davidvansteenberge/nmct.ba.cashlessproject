@@ -1,4 +1,4 @@
-﻿using GalaSoft.MvvmLight.Command;
+﻿using GalaSoft.MvvmLight.CommandWpf;
 using Newtonsoft.Json;
 using nmct.ba.cashlessproject.model;
 using System;
@@ -64,7 +64,23 @@ namespace nmct.ba.cashlessproject.ui.management.ViewModel
 
         public ICommand SaveProductCommand
         {
-            get { return new RelayCommand(SaveProduct); }
+            get { return new RelayCommand(SaveProduct, canExecuteSave); }
+        }
+
+        private bool canExecuteSave()
+        {
+            if (SelectedProduct != null)
+            {
+                if (SelectedProduct.IsValid == true)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return false;
         }
 
         public ICommand DeleteProductCommand

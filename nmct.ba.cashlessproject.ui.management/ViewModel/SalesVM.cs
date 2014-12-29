@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using GalaSoft.MvvmLight.CommandWpf;
+using Newtonsoft.Json;
 using nmct.ba.cashlessproject.model;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace nmct.ba.cashlessproject.ui.management.ViewModel
 {
@@ -27,6 +29,14 @@ namespace nmct.ba.cashlessproject.ui.management.ViewModel
                 SelectedStartDate = DateTime.Now;
                 SelectedEndDate = DateTime.Now;
             }
+        }
+        public ICommand ResetFiltersCommand
+        {
+            get { return new RelayCommand(ResetFilters); }
+        }
+        private void ResetFilters()
+        {
+            Sales = _salesOriginal;
         }
 
         #region products

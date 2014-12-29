@@ -1,11 +1,13 @@
-﻿using System;
+﻿using nmct.ba.cashlessproject.model.Validation;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 
 namespace nmct.ba.cashlessproject.model
 {
-    public class Organisation
+    public class Organisation : ValidationBase
     {
         #region fields
         private int _id;
@@ -26,46 +28,61 @@ namespace nmct.ba.cashlessproject.model
             get { return _id; }
             set { if (_id != value) { _id = value; } }
         }
+        [Required(ErrorMessage = "verplicht")]
         public string Login
         {
             get { return _login; }
             set { if (_login != value) { _login = value; } }
         }
+        [Required(ErrorMessage = "verplicht")]
         public string Password
         {
             get { return _password; }
             set { if (_password != value) { _password = value; } }
         }
+        [Required(ErrorMessage = "verplicht")]
         public string DbName
         {
             get { return _dbName; }
             set { if (_dbName != value) { _dbName = value; } }
         }
+        [Required(ErrorMessage = "verplicht")]
         public string DbLogin
         {
             get { return _dbLogin; }
             set { if (_dbLogin != value) { _dbLogin = value; } }
         }
+        [Required(ErrorMessage = "verplicht")]
         public string DbPassword
         {
             get { return _dbPassword; }
             set { if (_dbPassword != value) { _dbPassword = value; } }
         }
+        [Required(ErrorMessage = "verplicht")]
+        [RegularExpression(ValidationPaterns.ALPHANUMERICSPECIAL, ErrorMessage = "alfanumeriek + &-_'+")]
+        [StringLength(50,MinimumLength = 3, ErrorMessage = "tussen 3 en 50 karakters")]
         public string OrganisationName
         {
             get { return _organisationName; }
             set { if (_organisationName != value) { _organisationName = value; } }
         }
+        [Required(ErrorMessage = "verplicht")]
+        [RegularExpression(ValidationPaterns.ADDRESS, ErrorMessage = "(Straat nr, )(code )gemeente")]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "tussen 3 en 50 karakters")]
         public string Address
         {
             get { return _address; }
             set { if (_address != value) { _address = value; } }
         }
+        [Required(ErrorMessage = "verplicht")]
+        [RegularExpression(ValidationPaterns.EMAIL, ErrorMessage = "format: xxx(.)(-)(xxx)@xxx.com")]
         public string Email
         {
             get { return _email; }
             set { if (_email != value) { _email = value; } }
         }
+        [Required(ErrorMessage = "verplicht")]
+        [RegularExpression(ValidationPaterns.PHONE, ErrorMessage = "format: xx(x)(/)xx(.)xx(.)xx")]
         public string Phone
         {
             get { return _phone; }

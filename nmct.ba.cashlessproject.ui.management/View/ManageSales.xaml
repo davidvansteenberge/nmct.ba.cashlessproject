@@ -30,6 +30,8 @@
             <ListBox ScrollViewer.VerticalScrollBarVisibility="Visible" ItemsSource="{Binding Registers}" DisplayMemberPath="RegisterName" SelectedItem="{Binding SelectedRegister}"/>
         </GroupBox>
 
+        <Button Content="Reset" Command="{Binding ResetFiltersCommand}" Grid.Column="1" Margin="4,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75"/>
+
         <!-- Periode waarvan de statistieken weergegeven moeten worden -->
         <TextBlock Text="Van:" Grid.Column="1" Margin="46,25,369,195" VerticalAlignment="Center"/>
         <DatePicker Name="dpStartDate" Grid.Column="1" Margin="84,25,235,195" SelectedDate="{Binding SelectedStartDate}"/>
@@ -65,7 +67,7 @@
                                 <TextBlock Text="{Binding Amount}" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Grid.Column="2">
-                            <TextBlock Text=", Prijs: " />
+                                <TextBlock Text=", Prijs: " />
                                 <TextBlock Text="{Binding TotalPrice}" />
                             </StackPanel>
                         </Grid>

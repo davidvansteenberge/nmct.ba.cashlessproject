@@ -5,6 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:vm="clr-namespace:nmct.ba.cashlessproject.ui.management.ViewModel"
              xmlns:c="clr-namespace:nmct.ba.cashlessproject.ui.management.View.converters"
+             xmlns:rules="clr-namespace:nmct.ba.cashlessproject.ui.management.View.rules"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
              mc:Ignorable="d" 
              d:DesignHeight="830" d:DesignWidth="530"
              Height="530" Width="830">
@@ -26,23 +28,22 @@
 
         </GroupBox>
 
-        <GroupBox Header="Klanten wijzigen" Grid.Column="1" Margin="10" Grid.RowSpan="2">
+        <GroupBox Header="Medewerkers wijzigen" Grid.Column="1" Margin="10" Grid.RowSpan="2">
 
             <StackPanel>
                 <TextBlock Text="Naam: " Margin="20,15,0,0" />
-                <TextBox Text="{Binding SelectedEmployee.EmployeeName}"  Height="25" Margin="20,0,10,0"/>
+                <TextBox Text="{Binding SelectedEmployee.EmployeeName, NotifyOnValidationError=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextboxStyle}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}"/>
 
                 <TextBlock Text="Adres:"  Margin="20, 15, 0, 0"/>
-                <TextBox Text="{Binding SelectedEmployee.Address}" Height="25" Margin="20,0,10,0"/>
+                <TextBox Text="{Binding SelectedEmployee.Address, NotifyOnValidationError=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextboxStyle}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}"/>
 
                 <TextBlock Text="Email:"  Margin="20, 15, 0, 0"/>
-                <TextBox Text="{Binding SelectedEmployee.Email}" Height="25" Margin="20,0,10,0"/>
-
+                <TextBox Text="{Binding SelectedEmployee.Email, NotifyOnValidationError=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextboxStyle}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}"/>
+                
                 <TextBlock Text="Telefoon:"  Margin="20, 15, 0, 0"/>
-                <TextBox Text="{Binding SelectedEmployee.Phone}" Height="25" Margin="20,0,10,0"/>
+                <TextBox Text="{Binding SelectedEmployee.Phone, NotifyOnValidationError=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextboxStyle}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}"/>
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,15,10,0" Width="349">
-                    <!-- Margin="100,10,10,0" IsEnabled="False"-->
                     <Grid Width="349" HorizontalAlignment="Left" VerticalAlignment="Top">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>

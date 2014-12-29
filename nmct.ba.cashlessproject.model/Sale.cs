@@ -1,11 +1,13 @@
-﻿using System;
+﻿using nmct.ba.cashlessproject.model.Validation;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 
 namespace nmct.ba.cashlessproject.model
 {
-    public class Sale
+    public class Sale : ValidationBase
     {
         #region fields
         private int _id;
@@ -23,31 +25,42 @@ namespace nmct.ba.cashlessproject.model
             get { return _id; }
             set { if (_id != value) { _id = value; } }
         }
+        [Required(ErrorMessage = "verplicht")]
         public long Timestamp
         {
             get { return _timestamp; }
             set { if (_timestamp != value) { _timestamp = value; } }
         }
+        [Required(ErrorMessage = "verplicht")]
+        [MinValue(0, ErrorMessage = "hoger dan 0")]
         public int CustomerID
         {
             get { return _customerID; }
             set { if (_customerID != value) { _customerID = value; } }
         }
+        [Required(ErrorMessage = "verplicht")]
+        [MinValue(0, ErrorMessage = "hoger dan 0")]
         public int RegisterID
         {
             get { return _registerID; }
             set { if (_registerID != value) { _registerID = value; } }
         }
+        [Required(ErrorMessage = "verplicht")]
+        [MinValue(0, ErrorMessage = "hoger dan 0")]
         public int  ProductID
         {
             get { return _productID; }
             set { if (_productID != value) { _productID = value; } }
         }
+        [Required(ErrorMessage = "verplicht")]
+        [MinValue(0, ErrorMessage = "hoger dan 0")]
          public int  Amount
         {
             get { return _amount; }
             set { if (_amount != value) { _amount = value; } }
         }
+        [Required(ErrorMessage = "verplicht")]
+        [Range(0.01,100.00,ErrorMessage="tussen 0.01 en 100")]
         public double TotalPrice
         {
             get { return _totalPrice; }
@@ -58,7 +71,12 @@ namespace nmct.ba.cashlessproject.model
         #region constructor
         public Sale()
         {
-
+            Timestamp = 0;
+            CustomerID = 0;
+            RegisterID = 0;
+            ProductID = 0;
+            Amount = 0;
+            TotalPrice = 0;
         }
         #endregion constructor
     }
