@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Thinktecture.IdentityModel.Client;
+using nmct.ba.cashlessproject.model.Validation;
 
 namespace nmct.ba.cashlessproject.ui.management.ViewModel
 {
@@ -20,7 +21,8 @@ namespace nmct.ba.cashlessproject.ui.management.ViewModel
 
         public LoginVM()
         {
-           
+            Username = String.Empty;
+            Password = String.Empty;
         }
 
         private string _username;
@@ -47,7 +49,15 @@ namespace nmct.ba.cashlessproject.ui.management.ViewModel
 
         public ICommand LoginCommand
         {
-            get { return new RelayCommand(Login); }
+            get { return new RelayCommand(Login, canExecuteLogin); }
+        }
+
+        public bool canExecuteLogin()
+        {
+            if (!String.IsNullOrEmpty(Username) && !String.IsNullOrEmpty(Password))
+                return true;
+            else
+                return false;
         }
 
         private void Login()

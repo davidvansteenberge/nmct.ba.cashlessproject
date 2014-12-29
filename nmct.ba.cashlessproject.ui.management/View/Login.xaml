@@ -13,15 +13,14 @@
     <Grid>
         <GroupBox Grid.Column="1" Header="Login" Height="200" Width="354">
             <StackPanel>
-                <Label>Gebruikersnaam:</Label>
-                <TextBox Text="{Binding Username}"  Style="{StaticResource TextboxStyle}"/>
+                <TextBlock Text="Gebruikersnaam: " Margin="20,15,0,0" />
+                <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextboxStyle}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}"/>
 
-                <Label>Wachtwoord:</Label>
+                <TextBlock Text="Wachtwoord: " Margin="20,15,0,0" />
                 <!-- replace with password box and "break" the MVVM pattern: http://stackoverflow.com/questions/1483892/how-to-bind-to-a-passwordbox-in-mvvm-->
-                <TextBox Text="{Binding Password}"  Margin="70,10,70,0" Height="20px"/>
+                <TextBox Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextboxStyle}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}"/>
 
                 <Button Command="{Binding LoginCommand}" Content="Login" Height="30px" Margin="71,20,71,0" HorizontalAlignment="Center" Width="200"/>
-                <!--IsEnabled="False"-->
                 <TextBlock Foreground="Red" Text="{Binding Error}"/>
 
             </StackPanel>

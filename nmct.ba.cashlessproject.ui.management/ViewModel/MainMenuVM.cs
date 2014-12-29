@@ -1,4 +1,4 @@
-﻿using GalaSoft.MvvmLight.Command;
+﻿using GalaSoft.MvvmLight.CommandWpf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,8 +21,7 @@ namespace nmct.ba.cashlessproject.ui.management.ViewModel
         {
             if (ApplicationVM.token != null)
             {
-                //GetCustomers();
-                //tesnoods nog enable / disable buttons hier, maar overbodig, zonder in te loggen kan je dit scherm niet zien
+
             }
         }
 
@@ -103,6 +102,8 @@ namespace nmct.ba.cashlessproject.ui.management.ViewModel
         {
             ApplicationVM appvm = App.Current.MainWindow.DataContext as ApplicationVM;
             ApplicationVM.token = null;
+            appvm.IsLoggedIn = false;
+            appvm.ChangePage(new LoginVM());
         }
 
         private void ChangePassword()
