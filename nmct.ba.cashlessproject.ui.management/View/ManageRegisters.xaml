@@ -18,39 +18,19 @@
         </Grid.ColumnDefinitions>
 
         <GroupBox Header="Kassa's">
-
             <ListBox ScrollViewer.VerticalScrollBarVisibility="Visible" ItemsSource="{Binding Registers}" DisplayMemberPath="RegisterName" SelectedItem="{Binding SelectedRegister}"/>
-
         </GroupBox>
 
         <GroupBox Header="Bemanning kassa" Grid.Column="1">
-
-            <ListBox ScrollViewer.VerticalScrollBarVisibility="Visible" ItemsSource="{Binding Employees}">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <StackPanel Orientation="Horizontal" Grid.Column="0">
-                                <TextBlock Text="Naam: " />
-                                <TextBlock Text="{Binding EmployeeID.EmployeeName}" />
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" Grid.Column="1">
-                                <TextBlock Text=", Van: " />
-                                <TextBlock Text="{Binding TimeFrom, Converter={StaticResource UnixConverter}}" />
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" Grid.Column="2">
-                                <TextBlock Text=", Tot: " />
-                                <TextBlock Text="{Binding TimeTill, Converter={StaticResource UnixConverter}}" />
-                            </StackPanel>
-                        </Grid>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-
+            <ListView ItemsSource="{Binding Employees}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Naam" Width="Auto" DisplayMemberBinding="{Binding EmployeeID.EmployeeName}"/>
+                        <GridViewColumn Header="Van" Width="Auto" DisplayMemberBinding="{Binding TimeFrom, Converter={StaticResource UnixConverter}}"/>
+                        <GridViewColumn Header="Tot" Width="Auto" DisplayMemberBinding="{Binding TimeTill, Converter={StaticResource UnixConverter}}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
         </GroupBox>
 
     </Grid>

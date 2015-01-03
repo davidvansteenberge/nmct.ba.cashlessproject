@@ -49,7 +49,16 @@
                     </StackPanel>
                 </DataTemplate>
             </GroupBox.HeaderTemplate>
-            <ListBox ScrollViewer.VerticalScrollBarVisibility="Visible" ItemsSource="{Binding Sales}">
+            <ListView ItemsSource="{Binding Sales}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Tijd" Width="Auto" DisplayMemberBinding="{Binding Timestamp, Converter={StaticResource UnixConverter}}"/>
+                        <GridViewColumn Header="Aantal" Width="Auto" DisplayMemberBinding="{Binding Amount}"/>
+                        <GridViewColumn Header="Prijs" Width="Auto" DisplayMemberBinding="{Binding TotalPrice}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <!--<ListBox ScrollViewer.VerticalScrollBarVisibility="Visible" ItemsSource="{Binding Sales}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -73,7 +82,7 @@
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
-            </ListBox>
+            </ListBox>-->
         </GroupBox>
 
     </Grid>

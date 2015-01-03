@@ -30,28 +30,28 @@ namespace nmct.ba.cashlessproject.model
         public string EmployeeName
         {
             get { return _employeeName; }
-            set { if (_employeeName != value) { _employeeName = value; } }
+            set { if (_employeeName != value) { _employeeName = value; ValidateProperty(value); } }
         }
         [Required(ErrorMessage = "verplicht")]
         [RegularExpression(ValidationPaterns.ADDRESS, ErrorMessage = "(Straat nr, )(code )gemeente")]
         public string Address
         {
             get { return _address; }
-            set { if (_address != value) { _address = value; } }
+            set { if (_address != value) { _address = value; ValidateProperty(value); } }
         }
         [Required(ErrorMessage = "verplicht")]
         [RegularExpression(ValidationPaterns.EMAIL, ErrorMessage = "format: xxx(.)(-)(xxx)@xxx.com")]
         public string Email
         {
             get { return _email; }
-            set { if (_email != value) { _email = value; } }
+            set { if (_email != value) { _email = value; ValidateProperty(value); } }
         }
         [Required(ErrorMessage = "verplicht")]
         [RegularExpression(ValidationPaterns.PHONE, ErrorMessage = "format: xx(x)(/)xx(.)xx(.)xx")]
         public string Phone
         {
             get { return _phone; }
-            set { if (_phone != value) { _phone = value; } }
+            set { if (_phone != value) { _phone = value; ValidateProperty(value); } }
         }
         #endregion properties
 
