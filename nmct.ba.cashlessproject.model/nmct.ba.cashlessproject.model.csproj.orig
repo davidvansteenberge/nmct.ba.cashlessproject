@@ -11,7 +11,11 @@
     <RootNamespace>nmct.ba.cashlessproject.model</RootNamespace>
     <AssemblyName>nmct.ba.cashlessproject.model</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+<<<<<<< HEAD
     <TargetFrameworkProfile>Profile24</TargetFrameworkProfile>
+=======
+    <TargetFrameworkProfile>Profile158</TargetFrameworkProfile>
+>>>>>>> 4c1d8fe6e872dbd1c219eeb5e74164fb927eb441
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <FileUpgradeFlags>
@@ -37,17 +41,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <PlatformTarget>x86</PlatformTarget>
-    <OutputPath>bin\x86\Debug\</OutputPath>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <PlatformTarget>x86</PlatformTarget>
-    <OutputPath>bin\x86\Release\</OutputPath>
-  </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
-    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Customer.cs" />

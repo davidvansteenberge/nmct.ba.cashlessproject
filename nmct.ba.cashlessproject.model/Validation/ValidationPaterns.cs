@@ -7,7 +7,7 @@ namespace nmct.ba.cashlessproject.model.Validation
 {
     public static class ValidationPaterns
     {
-        public const string ADDRESS = @"^([a-zA-Z']{1}[a-zA-Z\'\-\s]+\d{1,3}[,]?[\s])?(\d{4}[\s])?[a-zA-Z'\s]+$";
+        public const string ADDRESS = @"^([a-zA-Z']{1}[a-zA-Z\'\-\s()]+\s{1}\d{1,3}[,]?[\s])?(\d{4}[\s])?[a-zA-Z'\s]+$";
         public const string ALPHA = @"^[a-zA-Z]+$";
         public const string ALPHANUMERIC = @"^[a-zA-Z0-9]+$";
         public const string ALPHANUMERICSPECIAL = @"^[a-zA-Z0-9\'\s\-\&_\+\.]+$";

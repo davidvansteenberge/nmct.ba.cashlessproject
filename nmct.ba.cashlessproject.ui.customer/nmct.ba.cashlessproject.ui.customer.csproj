@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1C8145E1-0212-4D3E-BE91-65167DB08549}</ProjectGuid>
+    <ProjectGuid>{84E5B35B-12E9-44CC-9A5C-1FB4C1B47E4B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>nmct.ba.cashlessproject.ui.management</RootNamespace>
-    <AssemblyName>nmct.ba.cashlessproject.ui.management</AssemblyName>
+    <RootNamespace>nmct.ba.cashlessproject.ui.customer</RootNamespace>
+    <AssemblyName>nmct.ba.cashlessproject.ui.customer</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -42,6 +42,10 @@
     <OutputPath>bin\x86\Release\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="beid35libCS, Version=3.5.3.6193, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\Rainbow\Documents\Belgium Identity Card SDK\beidlib\dotNet\bin\beid35libCS.dll</HintPath>
+    </Reference>
     <Reference Include="GalaSoft.MvvmLight">
       <HintPath>..\packages\MvvmLightLibs.5.0.2.0\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
     </Reference>
@@ -54,10 +58,15 @@
     <Reference Include="Microsoft.Practices.ServiceLocation">
       <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
+    <Reference Include="Net.Pkcs11, Version=1.1.5482.10387, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\Debug\Net.Pkcs11.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -93,50 +102,35 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="EID\Integrity.cs" />
+    <Compile Include="EID\ReadData.cs" />
+    <Compile Include="EID\Sign.cs" />
+    <Compile Include="EID\tests\CertificateValidityTest.cs" />
+    <Compile Include="EID\tests\DataTests.cs" />
+    <Compile Include="EID\tests\IntegrityTests.cs" />
+    <Compile Include="EID\tests\SignTests.cs" />
     <Compile Include="ViewModel\ApplicationVM.cs" />
     <Compile Include="ViewModel\CustomerVM.cs" />
-    <Compile Include="ViewModel\EmployeesVM.cs" />
-    <Compile Include="ViewModel\IPage.cs" />
+    <Compile Include="ViewModel\EID.cs" />
     <Compile Include="ViewModel\LoginVM.cs" />
-    <Compile Include="ViewModel\MainMenuVM.cs" />
-    <Compile Include="ViewModel\ObservableObject.cs" />
-    <Compile Include="ViewModel\ProductsVM.cs" />
-    <Compile Include="ViewModel\RegistersVM.cs" />
-    <Compile Include="ViewModel\SalesVM.cs" />
+    <Compile Include="ViewModel\RegisterCustomerVM.cs" />
     <Compile Include="View\converters\StringToImageConverter.cs" />
-    <Compile Include="View\converters\UnixConverter.cs" />
-    <Compile Include="View\Login.xaml.cs">
-      <DependentUpon>Login.xaml</DependentUpon>
+    <Compile Include="View\Customer.xaml.cs">
+      <DependentUpon>Customer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\MainMenu.xaml.cs">
-      <DependentUpon>MainMenu.xaml</DependentUpon>
+    <Compile Include="View\RegisterCustomer.xaml.cs">
+      <DependentUpon>RegisterCustomer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ManageCustomers.xaml.cs">
-      <DependentUpon>ManageCustomers.xaml</DependentUpon>
+    <Compile Include="View\ScanCard.xaml.cs">
+      <DependentUpon>ScanCard.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ManageEmployees.xaml.cs">
-      <DependentUpon>ManageEmployees.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\ManageProducts.xaml.cs">
-      <DependentUpon>ManageProducts.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\ManageRegisters.xaml.cs">
-      <DependentUpon>ManageRegisters.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\ManageSales.xaml.cs">
-      <DependentUpon>ManageSales.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\rules\ContactValidation.cs" />
-    <Compile Include="View\rules\BalanceValidation.cs" />
-    <Compile Include="View\rules\ValidationPaterns.cs" />
-    <Compile Include="View\rules\StringAlphaValidation.cs" />
+    <Page Include="View\Customer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Login.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\MainMenu.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -146,27 +140,22 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ViewModel\IPage.cs" />
+    <Compile Include="ViewModel\ObservableObject.cs" />
+    <Compile Include="ViewModel\ScanCardVM.cs" />
+    <Compile Include="View\converters\UnixConverter.cs" />
+    <Compile Include="View\Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\ManageCustomers.xaml">
+    <Page Include="View\RegisterCustomer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ManageEmployees.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\ManageProducts.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\ManageRegisters.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\ManageSales.xaml">
+    <Page Include="View\ScanCard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -200,15 +189,18 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="View\images\noimage.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\nmct.ba.cashlessproject.model\nmct.ba.cashlessproject.model.csproj">
       <Project>{76755cfd-f266-4e63-a7d0-878b501d1407}</Project>
       <Name>nmct.ba.cashlessproject.model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="beid35libCS_Wrapper.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ViewModel\beid35libCS_Wrapper.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />

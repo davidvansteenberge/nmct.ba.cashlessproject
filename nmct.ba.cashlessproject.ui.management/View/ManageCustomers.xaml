@@ -9,7 +9,7 @@
              xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
              mc:Ignorable="d" 
              d:DesignHeight="830" d:DesignWidth="530"
-             Height="530" Width="830">
+             Height="600" Width="800">
 
 
     <UserControl.DataContext>
@@ -48,7 +48,10 @@
                 
                 <TextBlock Text="Saldo:"  Margin="20, 15, 0, 0"/>
                 <TextBox Text="{Binding SelectedCustomer.Balance, NotifyOnValidationError=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextboxStyle}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}"/>
-                
+
+                <TextBlock Text="KaartID:"  Margin="20, 15, 0, 0"/>
+                <TextBox Text="{Binding SelectedCustomer.CardID, NotifyOnValidationError=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextboxStyle}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}"/>
+
                 <TextBlock Text="Afbeelding:"  Margin="20, 15, 0, 0"/>
                 <Button Command="{Binding AddImageCommand}" Margin="20,0,10,0">
                     <Button.Template>

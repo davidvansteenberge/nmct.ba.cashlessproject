@@ -16,6 +16,7 @@ namespace nmct.ba.cashlessproject.model
         private string _address;
         private byte[] _picture;
         private double _balance;
+        private string _cardid;
         #endregion fields
 
         #region properties
@@ -52,6 +53,12 @@ namespace nmct.ba.cashlessproject.model
         {
             get { return _balance; }
             set { if (_balance != value) { _balance = value; ValidateProperty(value); } }
+        }
+        [Required(ErrorMessage = "verplicht")]
+        public string CardID
+        {
+            get { return _cardid; }
+            set { if (_cardid != value) { _cardid = value; ValidateProperty(value); } }
         }
         #endregion properties
 

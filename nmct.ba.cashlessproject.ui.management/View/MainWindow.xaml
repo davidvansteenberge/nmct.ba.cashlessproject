@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="clr-namespace:nmct.ba.cashlessproject.ui.management.ViewModel"
         xmlns:v="clr-namespace:nmct.ba.cashlessproject.ui.management.View"
-        Title="Management" Height="546" Width="792" SizeToContent="WidthAndHeight">
+        Title="Management" Height="800" Width="800" SizeToContent="WidthAndHeight">
 
     <Window.DataContext>
         <vm:ApplicationVM/>
@@ -34,49 +34,24 @@
     </Window.Resources>
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="5*"/>
-        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="4*"/>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="6*"/>
         </Grid.ColumnDefinitions>
 
         <!-- De 5 hoofdknoppen -->
-        <ContentControl IsEnabled="{Binding IsLoggedIn}"  Grid.Column="1" Content="{Binding MenuPage}" HorizontalAlignment="Left" Grid.Row="0" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
+        <ContentControl IsEnabled="{Binding IsLoggedIn}" Content="{Binding MenuPage}" HorizontalAlignment="Center" Grid.Column="0" VerticalAlignment="Center"/>
+
+        <ContentControl Content="{Binding CurrentPage}" HorizontalAlignment="Center" Margin="15" Grid.Column="1" VerticalAlignment="Center"/>
         <!-- Wachtwoord wijzigen & uitloggen knoppen -->
-        <Button Content="Wachtwoord wijzigen" Grid.ColumnSpan="3" Grid.Column="1" Margin="32,10,29,236" Grid.Row="2" Visibility="Hidden"/>
-        <Button Content="Uitloggen" Grid.ColumnSpan="3" Grid.Column="1" Margin="32,70,29,176" Grid.Row="2" Visibility="Hidden"/>
+        <!--<Button Content="Wachtwoord wijzigen" Grid.ColumnSpan="3" Grid.Column="1" Margin="32,10,29,236" Grid.Row="2" Visibility="Hidden"/>
+        <Button Content="Uitloggen" Grid.ColumnSpan="3" Grid.Column="1" Margin="32,70,29,176" Grid.Row="2" Visibility="Hidden"/>-->
 
         <!-- Extra elementen als je wachtwoord wilt wijzigen -->
-        <TextBlock Grid.ColumnSpan="2" Grid.Column="1" Margin="85,55,79,201" Grid.Row="2" Visibility="Hidden">Oud wachtwoord:</TextBlock>
+        <!--<TextBlock Grid.ColumnSpan="2" Grid.Column="1" Margin="85,55,79,201" Grid.Row="2" Visibility="Hidden">Oud wachtwoord:</TextBlock>
         <TextBox Grid.ColumnSpan="2" Grid.Column="2" Margin="64,57,29,198" Grid.Row="2" Visibility="Hidden"></TextBox>
         <TextBlock Margin="85,97,74,161" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Visibility="Hidden">Nieuw wachtwoord:</TextBlock>
         <TextBox Grid.ColumnSpan="2" Grid.Column="2" Margin="64,94,29,161" Grid.Row="2" Visibility="Hidden"></TextBox>
-        <Button Content="Wachtwoord opslaan" Grid.ColumnSpan="3" Grid.Column="1" Margin="0,143,20,105" Grid.Row="2" Visibility="Hidden"/>
-
-        <!-- Login groupbox -->
-        <!--
-        <GroupBox Grid.Column="1" Header="Login" HorizontalAlignment="Left" Margin="32,10,0,0" Grid.Row="2" VerticalAlignment="Top" Grid.ColumnSpan="3" Height="200" Width="354">
-
-            <StackPanel>
-
-                <Label>Gebruikersnaam:</Label>
-                <TextBox Text="{Binding Username}"  Style="{StaticResource TextboxStyle}"/>
-
-                <Label>Wachtwoord:</Label>
-                <TextBox Text="{Binding Password}"  Margin="70,10,70,0" Height="20px"/>
-
-                <Button Content="Login" Height="30px" Margin="200,20,20,0"/>
-            </StackPanel>
-
-        </GroupBox>
-        -->
-
-        <ContentControl Grid.Column="1" Content="{Binding CurrentPage}" HorizontalAlignment="Left" Margin="32,10,0,0" Grid.Row="2" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
+        <Button Content="Wachtwoord opslaan" Grid.ColumnSpan="3" Grid.Column="1" Margin="0,143,20,105" Grid.Row="2" Visibility="Hidden"/>-->
     </Grid>
 </Window>
