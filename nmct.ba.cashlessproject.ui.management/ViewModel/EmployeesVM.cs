@@ -103,6 +103,8 @@ namespace nmct.ba.cashlessproject.ui.management.ViewModel
 
             if (SelectedEmployee.ID == 0)
             {
+                SelectedEmployee.Password = Cryptography.Encrypt(SelectedEmployee.Password);
+                input = JsonConvert.SerializeObject(SelectedEmployee);
                 using (HttpClient client = new HttpClient())
                 {
                     client.SetBearerToken(ApplicationVM.token.AccessToken);

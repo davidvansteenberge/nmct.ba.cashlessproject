@@ -34,6 +34,9 @@
                 <TextBlock Text="Naam: " Margin="20,15,0,0" />
                 <TextBox Text="{Binding SelectedEmployee.EmployeeName, NotifyOnValidationError=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextboxStyle}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}"/>
 
+                <TextBlock Text="Password: " Margin="20,15,0,0" />
+                <TextBox Text="{Binding SelectedEmployee.Password, NotifyOnValidationError=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextboxStyle}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}"/>
+
                 <TextBlock Text="Adres:"  Margin="20, 15, 0, 0"/>
                 <TextBox Text="{Binding SelectedEmployee.Address, NotifyOnValidationError=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextboxStyle}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}"/>
 

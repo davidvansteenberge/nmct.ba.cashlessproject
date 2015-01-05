@@ -43,5 +43,20 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+
+        <!-- PasswordBox -->
+        <Style x:Key="PassboxStyle" TargetType="{x:Type PasswordBox}">
+            <!--<Setter Property="FontSize" Value="11px" />-->
+            <Setter Property="Height" Value="25px" />
+            <!--<Setter Property="Width" Value="200px" />-->
+            <Setter Property="Margin" Value="20,0,10,0"/>
+            <!--<Setter Property="HorizontalAlignment" Value="Center" />-->
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <!--<Setter Property="Background" Value="Red"/>-->
+                    <!--<Setter Property="Foreground" Value="White"/>-->
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Application.Resources>
 </Application>
