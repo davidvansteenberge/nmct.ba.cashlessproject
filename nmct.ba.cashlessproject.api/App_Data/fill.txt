@@ -34,16 +34,19 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Employee](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[ID] [smallint] IDENTITY(1,1) NOT NULL,
 	[EmployeeName] [nvarchar](50) NOT NULL,
 	[Address] [nvarchar](50) NOT NULL,
 	[Email] [nvarchar](50) NOT NULL,
 	[Phone] [nvarchar](50) NOT NULL,
- CONSTRAINT [PK_Employee] PRIMARY KEY CLUSTERED 
+	[Password] [nvarchar](255) NOT NULL,
+ CONSTRAINT [PK_Employee_1] PRIMARY KEY CLUSTERED 
 (
-	[ID] ASC
+	[EmployeeName] ASC,
+	[Password] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
+
 GO
 /****** Object:  Table [dbo].[Errorlog]    Script Date: 19/11/2014 20:35:46 ******/
 SET ANSI_NULLS ON

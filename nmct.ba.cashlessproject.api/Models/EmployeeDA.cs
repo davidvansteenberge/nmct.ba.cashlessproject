@@ -19,7 +19,7 @@ namespace nmct.ba.cashlessproject.api.Models
             string dbpass = claims.FirstOrDefault(c => c.Type == "dbpass").Value;
             string dbname = claims.FirstOrDefault(c => c.Type == "dbname").Value;
 
-            return Database.CreateConnectionString("System.Data.SqlClient", @"DAVIDLAPTOP\SQLEXPRESS", Cryptography.Decrypt(dbname), Cryptography.Decrypt(dblogin), Cryptography.Decrypt(dbpass));
+            return Database.CreateConnectionString("System.Data.SqlClient", @"LUNALAPPY\SQLEXPRESS", Cryptography.Decrypt(dbname), Cryptography.Decrypt(dblogin), Cryptography.Decrypt(dbpass));
         }
 
         public static List<Employee> GetEmployees(IEnumerable<Claim> claims)
@@ -46,14 +46,27 @@ namespace nmct.ba.cashlessproject.api.Models
             return e;
         }
 
+        public static Employee GetEmployeeByNameAndPass(string name, string pass, IEnumerable<Claim> claims)
+        {
+            string sql = "SELECT * FROM Employee WHERE EmployeeName = @EmployeeName AND Password = @pass";
+            DbParameter par1 = Database.AddParameter(Database.ADMIN_DB, "@EmployeeName", name);
+            DbParameter par2 = Database.AddParameter(Database.ADMIN_DB, "@pass", pass);
+            DbDataReader reader = Database.GetData(Database.GetConnection(CreateConnectionString(claims)), sql, par1, par2);
+            reader.Read();
+            Employee e = Create(reader);
+            reader.Close();
+            return e;
+        }
+
         public static int InsertEmployee(Employee e, IEnumerable<Claim> claims)
         {
-            string sql = "INSERT INTO Employee VALUES(@EmployeeName,@Address,@Email,@Phone)";
+            string sql = "INSERT INTO Employee VALUES(@EmployeeName,@Address,@Email,@Phone,@Pass)";
             DbParameter par1 = Database.AddParameter(Database.ADMIN_DB, "@EmployeeName", e.EmployeeName);
             DbParameter par2 = Database.AddParameter(Database.ADMIN_DB, "@Address", e.Address);
             DbParameter par3 = Database.AddParameter(Database.ADMIN_DB, "@Email", e.Email);
             DbParameter par4 = Database.AddParameter(Database.ADMIN_DB, "@Phone", e.Phone);
-            return Database.InsertData(Database.GetConnection(CreateConnectionString(claims)), sql, par1, par2, par3, par4);
+            DbParameter par5 = Database.AddParameter(Database.ADMIN_DB, "@Pass", e.Password);
+            return Database.InsertData(Database.GetConnection(CreateConnectionString(claims)), sql, par1, par2, par3, par4, par5);
         }
 
         public static int UpdateEmployee(Employee e, IEnumerable<Claim> claims)
@@ -61,8 +74,8 @@ namespace nmct.ba.cashlessproject.api.Models
             string sql = "UPDATE Employee SET EmployeeName=@EmployeeName, Address=@Address, Email=@Email, Phone=@Phone WHERE ID=@ID";
             DbParameter par1 = Database.AddParameter(Database.ADMIN_DB, "@EmployeeName", e.EmployeeName);
             DbParameter par2 = Database.AddParameter(Database.ADMIN_DB, "@Address", e.Address);
-            DbParameter par4 = Database.AddParameter(Database.ADMIN_DB, "@Email", e.Email);
-            DbParameter par3 = Database.AddParameter(Database.ADMIN_DB, "@Phone", e.Phone);
+            DbParameter par3 = Database.AddParameter(Database.ADMIN_DB, "@Email", e.Email);
+            DbParameter par4 = Database.AddParameter(Database.ADMIN_DB, "@Phone", e.Phone);
             DbParameter par5 = Database.AddParameter(Database.ADMIN_DB, "@ID", e.ID);
             return Database.ModifyData(Database.GetConnection(CreateConnectionString(claims)), sql, par1, par2, par3, par4, par5);
         }
@@ -82,7 +95,8 @@ namespace nmct.ba.cashlessproject.api.Models
                 EmployeeName = record["EmployeeName"].ToString(),
                 Address = record["Address"].ToString(),
                 Email = record["Email"].ToString(),
-                Phone = record["Phone"].ToString()
+                Phone = record["Phone"].ToString(),
+                Password = record["Password"].ToString()
             };
         }
     }

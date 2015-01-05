@@ -10,6 +10,7 @@ using System.Web.Http;
 
 namespace nmct.ba.cashlessproject.api.Controllers
 {
+    [RoutePrefix("api/employee")]
     public class EmployeeController : ApiController
     {
         public List<Employee> Get()
@@ -22,6 +23,15 @@ namespace nmct.ba.cashlessproject.api.Controllers
         {
             ClaimsPrincipal p = RequestContext.Principal as ClaimsPrincipal;
             return EmployeeDA.GetEmployeeByID(id, p.Claims);
+        }
+
+        //api/{controller}/{id}
+        [Route("checkemployee")]
+        [HttpGet]
+        public Employee CheckEmployee(string name, string password)
+        {
+            ClaimsPrincipal p = RequestContext.Principal as ClaimsPrincipal;
+            return EmployeeDA.GetEmployeeByNameAndPass(name, password, p.Claims);
         }
 
         public HttpResponseMessage Post(Employee e)

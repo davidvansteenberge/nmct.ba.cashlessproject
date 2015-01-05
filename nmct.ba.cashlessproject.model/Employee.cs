@@ -16,6 +16,7 @@ namespace nmct.ba.cashlessproject.model
         private string _address;
         private string _email;
         private string _phone;
+        private string _pass;
         #endregion fields
 
         #region properties
@@ -53,6 +54,12 @@ namespace nmct.ba.cashlessproject.model
             get { return _phone; }
             set { if (_phone != value) { _phone = value; ValidateProperty(value); } }
         }
+        [Required(ErrorMessage = "verplicht")]
+        public string Password
+        {
+            get { return _pass; }
+            set { if (_pass != value) { _pass = value; ValidateProperty(value); } }
+        }
         #endregion properties
 
         #region constructor
@@ -62,6 +69,7 @@ namespace nmct.ba.cashlessproject.model
             Address = String.Empty;
             Email = String.Empty;
             Phone = String.Empty;
+            Password = String.Empty;
         }
         #endregion constructor
     }
