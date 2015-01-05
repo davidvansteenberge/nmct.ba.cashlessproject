@@ -35,7 +35,7 @@ namespace nmct.ba.cashlessproject.ui.customer.ViewModel
         public double AmmountToAdd
         {
             get { return _ammountToAdd; }
-            set { if (_ammountToAdd != value) { _ammountToAdd = value; OnPropertyChanged("AmmountToAdd"); SelectedCustomer.Balance = value;/*updateBalance(value)*/; } }
+            set { if (_ammountToAdd != value) { _ammountToAdd = value; OnPropertyChanged("AmmountToAdd"); SelectedCustomer.Balance = value; } }
         }
 
         public ICommand SaveCustomerCommand
@@ -46,16 +46,6 @@ namespace nmct.ba.cashlessproject.ui.customer.ViewModel
         public ICommand CancelCommand
         {
             get { return new RelayCommand(CancelCustomer); }
-        }
-
-        private void updateBalance(double value)
-        {
-            /*double oldVal = value;
-            SelectedCustomer.Balance += value;
-
-            if (!SelectedCustomer.IsValid)
-                SelectedCustomer.Balance = oldVal;
-                */
         }
 
         private bool canExecuteSave()
@@ -76,9 +66,6 @@ namespace nmct.ba.cashlessproject.ui.customer.ViewModel
 
         private async void SaveCustomer()
         {
-            /*if (SelectedCustomer.Picture == null)
-                SelectedCustomer.Picture = GetPhoto();*/
-
             string input = JsonConvert.SerializeObject(SelectedCustomer);
             // check insert (no ID assigned) or update (already an ID assigned)
 

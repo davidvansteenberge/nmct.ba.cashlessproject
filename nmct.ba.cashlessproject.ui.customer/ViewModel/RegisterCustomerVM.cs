@@ -64,6 +64,7 @@ namespace nmct.ba.cashlessproject.ui.customer.ViewModel
             get { return new RelayCommand(AddImage); }
         }
 
+        ApplicationVM appvm = App.Current.MainWindow.DataContext as ApplicationVM;
         private async void SaveCustomer()
         {
             /*if (SelectedCustomer.Picture == null)
@@ -82,6 +83,7 @@ namespace nmct.ba.cashlessproject.ui.customer.ViewModel
                     {
                         string output = await response.Content.ReadAsStringAsync();
                         SelectedCustomer.ID = Int32.Parse(output);
+                        appvm.ChangePage(new CustomerVM(SelectedCustomer));
                     }
                     else
                     {
