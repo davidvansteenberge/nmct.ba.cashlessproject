@@ -175,6 +175,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="beid35libCS_Wrapper.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="ViewModel\beid35libCS_Wrapper.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

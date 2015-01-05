@@ -30,7 +30,7 @@
             <Button Command="{Binding ReadEIDCommand}" Margin="5"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Scan EID" FontSize="18" Grid.Column="0" Grid.Row="0"/>
             <TextBlock Text="Saldo" Grid.Column="1" Grid.Row="0" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <TextBlock Text="{Binding SelectedCustomer.Balance, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="1" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <Image Source="{Binding Customer.Picture}" Grid.Column="0" Grid.Row="1"/>
+            <Image Source="{Binding SelectedCustomer.Picture}" Grid.Column="0" Grid.Row="1"/>
         </Grid>
         
         <Grid Grid.Column="2">
