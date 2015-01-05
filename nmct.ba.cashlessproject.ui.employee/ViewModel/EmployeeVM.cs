@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight.CommandWpf;
 using Newtonsoft.Json;
 using nmct.ba.cashlessproject.model;
+using nmct.ba.cashlessproject.ui.employee.EID;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -124,7 +125,7 @@ namespace nmct.ba.cashlessproject.ui.employee.ViewModel
         }
         public ICommand SaveSaleCommand
         {
-            get { return new RelayCommand(SaveSale, CanExecuteSave); }
+            get { return new RelayCommand(SaveSaleClicked, CanExecuteSave); }
         }
         private bool CanExecuteSave()
         {
@@ -165,9 +166,9 @@ namespace nmct.ba.cashlessproject.ui.employee.ViewModel
                 return false;
         }
         
-        private async void ReadEID()
+        private void ReadEID()
         {
-            BEID_ReaderSet.initSDK();
+            /*BEID_ReaderSet.initSDK();
             // access the eID card here
             if (BEID_ReaderSet.instance().readerCount() > 0)
             {
@@ -182,10 +183,31 @@ namespace nmct.ba.cashlessproject.ui.employee.ViewModel
                     }
                 }
             }
-            BEID_ReaderSet.releaseSDK();
+            BEID_ReaderSet.releaseSDK();*/
+            /*Fucking bugged dll, bollet*/
+
+            GetCustomerByCardID(Load_eid());
         }
 
+        private String Load_eid()
+        {
+            ReadData rd = new ReadData("beidpkcs11.dll");
+            string res = rd.GetCardNumber();
+            return res;
+        }
 
+        private Customer Load_eidCustomer()
+        {
+
+            Customer c = new Customer();
+            c.Address = new ReadData("beidpkcs11.dll").GetStreet() + ", " + new ReadData("beidpkcs11.dll").GetZip() + " " + new ReadData("beidpkcs11.dll").GetCity();
+            c.CardID = new ReadData("beidpkcs11.dll").GetCardNumber();
+            c.CustomerName = new ReadData("beidpkcs11.dll").GetFirstName() + " " + new ReadData("beidpkcs11.dll").GetSurname();
+            c.Picture = new ReadData("beidpkcs11.dll").GetPhotoFile();
+            c.Balance = 0;
+
+            return c;
+        }
         private async void GetCustomerByCardID(string id)
         {
             using (HttpClient client = new HttpClient())
@@ -218,8 +240,37 @@ namespace nmct.ba.cashlessproject.ui.employee.ViewModel
             //token niet op nul zetten, is voor de database
         }
 
+
+        private async void SaveSaleClicked()
+        {
+            var query = Order.Select(prod => prod.ID).Distinct().ToList();
+            int amount = 0;
+            double totalPrice = 0;
+
+            Sale sale = new Sale();
+
+            foreach (int id in query)
+            {
+                var products = Order.Where(prod => prod.ID == id);
+                foreach (var product in products)
+                {
+                    amount++;
+                    totalPrice = totalPrice + product.Price;
+                }
+
+                sale.Timestamp = GetUnixTimeStamp();
+                sale.CustomerID = SelectedCustomer.ID;
+                sale.ProductID = id;
+                sale.Amount = amount;
+                sale.TotalPrice = totalPrice;
+                SelectedSale = sale;
+                SaveSale();
+            }
+        }
+
         private async void SaveSale()
         {
+
             string input = JsonConvert.SerializeObject(SelectedSale);
 
             if (SelectedSale.ID == 0)
@@ -254,6 +305,7 @@ namespace nmct.ba.cashlessproject.ui.employee.ViewModel
             }
         }
 
+        
 
         private void RemoveFromList()
         {
@@ -269,6 +321,11 @@ namespace nmct.ba.cashlessproject.ui.employee.ViewModel
                 Order.Add(SelectedProduct);
         }
 
+        private long GetUnixTimeStamp()
+        {
+            DateTime dt = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second, DateTime.Now.Millisecond);
+            return DateTimeToUnixTimestamp(dt);
+        }
 
         private DateTime UnixTimestampToDateTime(long unix)
         {

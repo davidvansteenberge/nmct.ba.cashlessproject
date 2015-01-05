@@ -106,8 +106,8 @@ namespace nmct.ba.cashlessproject.api.Models
 
         public static int InsertSale(Sale s, IEnumerable<Claim> claims)
         {
-            string sql = "INSERT INTO Sales VALUES(@Timestamp,@CustomerID,@RegisterID,@ProductID,@Amount,@TotalPrice)";
-            DbParameter par1 = Database.AddParameter(Database.ADMIN_DB, "@CustomerID", s.CustomerID);
+            string sql = "INSERT INTO Sale VALUES(@Timestamp,@CustomerID,@RegisterID,@ProductID,@Amount,@TotalPrice)";
+            DbParameter par1 = Database.AddParameter(Database.ADMIN_DB, "@Timestamp", s.Timestamp);
             DbParameter par2 = Database.AddParameter(Database.ADMIN_DB, "@CustomerID", s.CustomerID);
             DbParameter par3 = Database.AddParameter(Database.ADMIN_DB, "@RegisterID", s.RegisterID);
             DbParameter par4 = Database.AddParameter(Database.ADMIN_DB, "@ProductID", s.ProductID);
@@ -118,7 +118,7 @@ namespace nmct.ba.cashlessproject.api.Models
 
         public static int UpdateSale(Sale s, IEnumerable<Claim> claims)
         {
-            string sql = "UPDATE Sales SET Timestamp=@Timestamp, CustomerID=@CustomerID, RegisterID=@RegisterID, ProductID=@ProductID, Amount=@Amount, TotalPrice=@TotalPrice WHERE ID=@ID";
+            string sql = "UPDATE Sale SET Timestamp=@Timestamp, CustomerID=@CustomerID, RegisterID=@RegisterID, ProductID=@ProductID, Amount=@Amount, TotalPrice=@TotalPrice WHERE ID=@ID";
             DbParameter par1 = Database.AddParameter(Database.ADMIN_DB, "@Timestamp", s.Timestamp);
             DbParameter par2 = Database.AddParameter(Database.ADMIN_DB, "@CustomerID", s.CustomerID);
             DbParameter par3 = Database.AddParameter(Database.ADMIN_DB, "@RegisterID", s.RegisterID);

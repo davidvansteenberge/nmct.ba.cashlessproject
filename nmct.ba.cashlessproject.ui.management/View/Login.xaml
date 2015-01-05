@@ -11,7 +11,7 @@
     </UserControl.DataContext>
 
     <Grid>
-        <GroupBox Grid.Column="1" Header="Login" Height="200" Width="354">
+        <GroupBox Grid.Column="1" Header="Database Login" Height="200" Width="354">
             <StackPanel>
                 <TextBlock Text="Gebruikersnaam: " Margin="20,15,0,0" />
                 <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextboxStyle}" Validation.ErrorTemplate="{StaticResource ErrorTemplate}"/>
