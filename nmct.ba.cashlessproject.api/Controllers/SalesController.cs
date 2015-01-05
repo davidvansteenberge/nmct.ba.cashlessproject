@@ -44,7 +44,7 @@ namespace nmct.ba.cashlessproject.api.Controllers
         public HttpResponseMessage Post(Sale s)
         {
             ClaimsPrincipal p = RequestContext.Principal as ClaimsPrincipal;
-            int id = SalesDA.InsterSale(s, p.Claims);
+            int id = SalesDA.InsertSale(s, p.Claims);
 
             HttpResponseMessage message = new HttpResponseMessage(HttpStatusCode.OK);
             message.Content = new StringContent(id.ToString());

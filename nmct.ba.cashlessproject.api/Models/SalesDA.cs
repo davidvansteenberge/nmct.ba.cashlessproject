@@ -19,7 +19,7 @@ namespace nmct.ba.cashlessproject.api.Models
             string dbpass = claims.FirstOrDefault(c => c.Type == "dbpass").Value;
             string dbname = claims.FirstOrDefault(c => c.Type == "dbname").Value;
 
-            return Database.CreateConnectionString("System.Data.SqlClient", @"DAVIDLAPTOP\SQLEXPRESS", Cryptography.Decrypt(dbname), Cryptography.Decrypt(dblogin), Cryptography.Decrypt(dbpass));
+            return Database.CreateConnectionString("System.Data.SqlClient", @"LUNALAPPY\SQLEXPRESS", Cryptography.Decrypt(dbname), Cryptography.Decrypt(dblogin), Cryptography.Decrypt(dbpass));
         }
 
         public static List<Sale> GetSales(IEnumerable<Claim> claims)
@@ -104,32 +104,29 @@ namespace nmct.ba.cashlessproject.api.Models
             return list;
         }
 
-        public static int InsterSale(Sale s, IEnumerable<Claim> claims)
+        public static int InsertSale(Sale s, IEnumerable<Claim> claims)
         {
-            //string sql = "INSERT INTO Sales VALUES(@Timestamp,@CustomerID,@RegisterID,@ProductID,@Amount,@TotalPrice)";
-            string sql = "INSERT INTO Sale VALUES(@CustomerID,@RegisterID,@ProductID,@Amount,@TotalPrice)";
+            string sql = "INSERT INTO Sales VALUES(@Timestamp,@CustomerID,@RegisterID,@ProductID,@Amount,@TotalPrice)";
+            DbParameter par1 = Database.AddParameter(Database.ADMIN_DB, "@CustomerID", s.CustomerID);
             DbParameter par2 = Database.AddParameter(Database.ADMIN_DB, "@CustomerID", s.CustomerID);
             DbParameter par3 = Database.AddParameter(Database.ADMIN_DB, "@RegisterID", s.RegisterID);
             DbParameter par4 = Database.AddParameter(Database.ADMIN_DB, "@ProductID", s.ProductID);
             DbParameter par5 = Database.AddParameter(Database.ADMIN_DB, "@Amount", s.Amount);
             DbParameter par6 = Database.AddParameter(Database.ADMIN_DB, "@TotalPrice", s.TotalPrice);
-            //return Database.InsertData(Database.GetConnection(CreateConnectionString(claims)), sql, par1, par2, par3, par4, par5, par6);
-            return Database.InsertData(Database.GetConnection(CreateConnectionString(claims)), sql, par2, par3, par4, par5, par6);
+            return Database.InsertData(Database.GetConnection(CreateConnectionString(claims)), sql, par1, par2, par3, par4, par5, par6);
         }
 
         public static int UpdateSale(Sale s, IEnumerable<Claim> claims)
         {
-            //string sql = "UPDATE Sales SET Timestamp=@Timestamp, CustomerID=@CustomerID, RegisterID=@RegisterID, ProductID=@ProductID, Amount=@Amount, TotalPrice=@TotalPrice WHERE ID=@ID";
-            string sql = "UPDATE Sale SET CustomerID=@CustomerID, RegisterID=@RegisterID, ProductID=@ProductID, Amount=@Amount, TotalPrice=@TotalPrice WHERE ID=@ID";
-            //DbParameter par1 = Database.AddParameter(Database.ADMIN_DB, "@Timestamp", s.Timestamp);
+            string sql = "UPDATE Sales SET Timestamp=@Timestamp, CustomerID=@CustomerID, RegisterID=@RegisterID, ProductID=@ProductID, Amount=@Amount, TotalPrice=@TotalPrice WHERE ID=@ID";
+            DbParameter par1 = Database.AddParameter(Database.ADMIN_DB, "@Timestamp", s.Timestamp);
             DbParameter par2 = Database.AddParameter(Database.ADMIN_DB, "@CustomerID", s.CustomerID);
             DbParameter par3 = Database.AddParameter(Database.ADMIN_DB, "@RegisterID", s.RegisterID);
             DbParameter par4 = Database.AddParameter(Database.ADMIN_DB, "@ProductID", s.ProductID);
             DbParameter par5 = Database.AddParameter(Database.ADMIN_DB, "@Amount", s.Amount);
             DbParameter par6 = Database.AddParameter(Database.ADMIN_DB, "@TotalPrice", s.TotalPrice);
             DbParameter par7 = Database.AddParameter(Database.ADMIN_DB, "@ID", s.ID);
-            //return Database.ModifyData(Database.GetConnection(CreateConnectionString(claims)), sql, par1, par2, par3, par4, par5, par6, par7);
-            return Database.ModifyData(Database.GetConnection(CreateConnectionString(claims)), sql, par2, par3, par4, par5, par6, par7);
+            return Database.ModifyData(Database.GetConnection(CreateConnectionString(claims)), sql, par1, par2, par3, par4, par5, par6, par7);
         }
 
         public static int DeleteSale(int id, IEnumerable<Claim> claims)

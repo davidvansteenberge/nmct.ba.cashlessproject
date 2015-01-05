@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="clr-namespace:nmct.ba.cashlessproject.ui.customer.ViewModel"
         xmlns:v="clr-namespace:nmct.ba.cashlessproject.ui.customer.View"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Vereneging Klant" Height="350" Width="525">
     
     <Window.DataContext>
         <vm:ApplicationVM/>
