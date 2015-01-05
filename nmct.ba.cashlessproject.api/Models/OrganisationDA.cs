@@ -148,5 +148,17 @@ namespace nmct.ba.cashlessproject.api.Models
             string[] commandTexts = input.Split(splitter, StringSplitOptions.RemoveEmptyEntries);
             return commandTexts;
         }
+
+        public static int ChangePassword(string user, string pass)
+        {
+            user = Cryptography.Encrypt(user);
+            pass = Cryptography.Encrypt(pass);
+
+            string sql = "UPDATE Organisations SET Password=@Password WHERE Login=@Login";
+            DbParameter par1 = Database.AddParameter(Database.ADMIN_DB, "@Password", user);
+            DbParameter par2 = Database.AddParameter(Database.ADMIN_DB, "@Login", pass);
+            return Database.ModifyData(Database.GetConnection(Database.ADMIN_DB), sql, par1, par2);
+
+        }
     }
 }

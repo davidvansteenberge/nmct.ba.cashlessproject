@@ -95,6 +95,7 @@
     </ApplicationDefinition>
     <Compile Include="Cryptography.cs" />
     <Compile Include="ViewModel\ApplicationVM.cs" />
+    <Compile Include="ViewModel\ChangePasswordVM.cs" />
     <Compile Include="ViewModel\CustomerVM.cs" />
     <Compile Include="ViewModel\EmployeesVM.cs" />
     <Compile Include="ViewModel\IPage.cs" />
@@ -104,6 +105,9 @@
     <Compile Include="ViewModel\ProductsVM.cs" />
     <Compile Include="ViewModel\RegistersVM.cs" />
     <Compile Include="ViewModel\SalesVM.cs" />
+    <Compile Include="View\ChangePassword.xaml.cs">
+      <DependentUpon>ChangePassword.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\converters\StringToImageConverter.cs" />
     <Compile Include="View\converters\UnixConverter.cs" />
     <Compile Include="View\Login.xaml.cs">
@@ -131,6 +135,10 @@
     <Compile Include="View\rules\BalanceValidation.cs" />
     <Compile Include="View\rules\ValidationPaterns.cs" />
     <Compile Include="View\rules\StringAlphaValidation.cs" />
+    <Page Include="View\ChangePassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Login.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

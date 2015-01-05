@@ -40,6 +40,13 @@ namespace nmct.ba.cashlessproject.api.Controllers
             return OrganisationDA.UpdateOrganisation(org);
         }
 
+        [Route("changepass")]
+        public HttpResponseMessage Put(string user, string pass)
+        {
+            OrganisationDA.ChangePassword(user, pass);
+            return new HttpResponseMessage(HttpStatusCode.OK);
+        }
+
         // DELETE api/<controller>/5
         public void Delete(int id)
         {

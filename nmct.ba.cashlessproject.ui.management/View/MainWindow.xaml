@@ -13,6 +13,9 @@
         <DataTemplate DataType="{x:Type vm:LoginVM}">
             <v:Login/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ChangePasswordVM}">
+            <v:ChangePassword/>
+        </DataTemplate>
         <DataTemplate DataType="{x:Type vm:MainMenuVM}">
             <v:MainMenu/>
         </DataTemplate>

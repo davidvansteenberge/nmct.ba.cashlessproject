@@ -66,6 +66,7 @@ namespace nmct.ba.cashlessproject.ui.management.ViewModel
 
 
 
+        
 
 
         private void GoToManageProducts()
@@ -109,7 +110,7 @@ namespace nmct.ba.cashlessproject.ui.management.ViewModel
         private void ChangePassword()
         {
             ApplicationVM appvm = App.Current.MainWindow.DataContext as ApplicationVM;
-            throw new NotImplementedException("MainMenuVM: ChangePassword");
+            appvm.ChangePage(new ChangePasswordVM());
         }
     }
 }
